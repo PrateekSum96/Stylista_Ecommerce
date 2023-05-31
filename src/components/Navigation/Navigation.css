@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+html {
+  font-size: 100%;
+}
+
+.navigation .brand-name {
+  font-family: "Lobster", cursive;
+  font-size: 2rem;
+}
+
+.brand-name {
+  grid-area: brandName;
+  padding-left: 0.7rem;
+}
+
+.brand-name a {
+  color: white;
+  text-decoration: none;
+}
+
+.search-bar {
+  background-color: white;
+  margin: 0.5rem 2rem 0.7rem 2rem;
+  height: 2rem;
+  padding: 0rem 0.5rem;
+  grid-area: searchBar;
+  border-radius: 2rem;
+}
+.search-bar i {
+  color: black;
+  padding-right: 0.5rem;
+}
+
+.search-bar .search {
+  width: 90%;
+  height: 1.8rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.icons {
+  grid-area: icons;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 0.5rem;
+  padding-top: 0.5rem;
+}
+.icons i {
+  padding: 0.7rem;
+  color: white;
+}
+
+.navigation {
+  padding-top: 0.5rem;
+  padding-bottom: 0.2rem;
+  background-color: black;
+  color: white;
+  display: grid;
+  grid-template-areas:
+    "brandName  icons"
+    "searchBar  searchBar";
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+    background-color: black;
+    color: white;
+    display: grid;
+    grid-template-areas: "brandName searchBar  icons";
+  }
+}
