@@ -1,10 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 html {
   font-size: 100%;
-}
-.home {
   background-color: #f0f1f2;
 }
+
 .header-image img {
   width: 100%;
   height: auto;
