@@ -6,6 +6,7 @@ import { Navigation } from "./components/Navigation/Navigation";
 import { Cart } from "./pages/Cart/Cart";
 import { WishList } from "./pages/WishList/WishList";
 import { Account } from "./pages/Account/Account";
+import Mockman from "mockman-js";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishList" element={<WishList />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
   );
