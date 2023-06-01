@@ -1,0 +1,79 @@
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.product-card {
+  position: relative;
+  border: 1px solid black;
+  margin: 2rem;
+  border-radius: 1rem;
+}
+
+.product-card img {
+  width: 210px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+.product-card .trending {
+  position: absolute;
+  bottom: 20rem;
+  background-color: rgb(255, 128, 0);
+  color: white;
+  width: 30%;
+  padding: 0.3rem 0rem;
+}
+.product-card .rating-review-size {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: 1.8rem;
+}
+
+/* .product-card .rating-review-size {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 20rem;
+  right: 2rem;
+} */
+.product-card .rating-review-size span {
+  padding: 0rem 0.3rem;
+}
+.product-card .rating-review-size .rating {
+  background-color: rgb(18, 111, 148);
+  padding: 0.2rem 0.2rem;
+  color: white;
+}
+.product-card .rating-review-size .size {
+  background-color: rgb(246, 99, 21);
+  padding: 0.2rem 0.4rem;
+  color: white;
+}
+.product-card .title {
+  margin-top: -1.5rem;
+  font-size: 1.2rem;
+  padding-left: 0.2rem;
+}
+.product-card .price span {
+  padding: 0.1rem 0.2rem;
+}
+.product-card .price .original-price {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.product-card .btn {
+  margin: 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.product-card button {
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.4rem;
+  background-color: rgb(62, 112, 220);
+  color: white;
+  border: none;
+}
