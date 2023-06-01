@@ -90,7 +90,7 @@ i {
 #out-of-stock::after {
   content: " Out of stock";
   position: absolute;
-  color: black;
+  color: red;
   font-size: 2rem;
   font-weight: 700;
   bottom: 13rem;
