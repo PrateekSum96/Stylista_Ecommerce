@@ -4,16 +4,23 @@
   height: 1.8rem;
   position: absolute;
   left: 0rem;
+  top: 3.8rem;
   cursor: pointer;
+}
+#openSideBar {
+  position: absolute;
+  left: 0rem;
+  top: 3.95rem;
 }
 
 .filters {
   color: white;
   background-color: black;
+
   opacity: 0.9;
   padding: 1rem;
   width: 200px;
-  margin-top: 0.5rem;
+  margin-top: 0rem;
   position: fixed;
   z-index: 10;
   transform: translateX(-240px);
@@ -36,7 +43,7 @@
 }
 .spinner.middle,
 .spinner.bottom {
-  margin-top: 3px;
+  margin-top: 4px;
 }
 #openSideBar:checked ~ .sideBarIconToggle > .spinner.middle {
   opacity: 0;
