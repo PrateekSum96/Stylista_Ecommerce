@@ -1,0 +1,67 @@
+.sideBarIconToggle {
+  background-color: black;
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  left: 0rem;
+  cursor: pointer;
+}
+
+.filters {
+  color: white;
+  background-color: black;
+  opacity: 0.9;
+  padding: 1rem;
+  width: 200px;
+  margin-top: 0.5rem;
+  position: fixed;
+  z-index: 10;
+  transform: translateX(-240px);
+  transition: transform 250ms ease-in-out;
+}
+
+#openSideBar:checked ~ .filters {
+  transform: translateX(0px);
+}
+
+.filter-clear {
+  display: flex;
+  justify-content: space-between;
+}
+.spinner {
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s;
+  margin-top: 5px;
+}
+.spinner.middle,
+.spinner.bottom {
+  margin-top: 3px;
+}
+#openSideBar:checked ~ .sideBarIconToggle > .spinner.middle {
+  opacity: 0;
+}
+#openSideBar:checked ~ .sideBarIconToggle > .spinner.top {
+  transform: rotate(135deg);
+  margin-top: 8px;
+}
+#openSideBar:checked ~ .sideBarIconToggle > .spinner.bottom {
+  transform: rotate(-135deg);
+  margin-top: -9px;
+}
+@media screen and (min-width: 768px) {
+  .sideBarIconToggle,
+  #openSideBar {
+    display: none;
+  }
+  .filters {
+    color: black;
+    background-color: #f0f1f2;
+    position: static;
+    padding: 1.4rem;
+    width: 12rem;
+    font-size: 1.2rem;
+    margin-top: 0rem;
+    transform: translateX(0px);
+  }
+}

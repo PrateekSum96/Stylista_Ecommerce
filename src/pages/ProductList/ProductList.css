@@ -6,9 +6,10 @@
 
 .product-card {
   position: relative;
-  border: 1px solid black;
+  background-color: white;
   margin: 2rem;
   border-radius: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .product-card img {
@@ -75,4 +76,13 @@
 }
 .description {
   padding: 0.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .product-list {
+    display: flex;
+  }
+  .product {
+    border-left: 2px solid white;
+  }
 }
