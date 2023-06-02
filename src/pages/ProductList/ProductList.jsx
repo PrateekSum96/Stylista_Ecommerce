@@ -14,12 +14,17 @@ export const ProductList = () => {
             {item.trending && <div className="trending">Trending</div>}
             <div className="rating-review-size">
               <div className="rating">
-                <span>{item.rating}</span>||
+                <span>
+                  <i class="fa-solid fa-star fa-2xs"></i>
+                  {item.rating}
+                </span>
+                ||
                 <span>{item.reviews}</span>
               </div>
               <div className="size">{item.size}</div>
             </div>
             <div className="title">{item.title}</div>
+            <div className="description">{item.description}</div>
             <div className="price">
               <span>&#8377;{item.price}</span>
               <span className="original-price">

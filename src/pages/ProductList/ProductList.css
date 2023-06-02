@@ -19,11 +19,14 @@
 }
 .product-card .trending {
   position: absolute;
-  bottom: 20rem;
+  bottom: 22.1rem;
   background-color: rgb(255, 128, 0);
   color: white;
   width: 30%;
   padding: 0.3rem 0rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding-left: 0.2rem;
 }
 .product-card .rating-review-size {
   display: flex;
@@ -32,13 +35,6 @@
   bottom: 1.8rem;
 }
 
-/* .product-card .rating-review-size {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 20rem;
-  right: 2rem;
-} */
 .product-card .rating-review-size span {
   padding: 0rem 0.3rem;
 }
@@ -52,7 +48,7 @@
   padding: 0.2rem 0.4rem;
   color: white;
 }
-.product-card .title {
+.title {
   margin-top: -1.5rem;
   font-size: 1.2rem;
   padding-left: 0.2rem;
@@ -76,4 +72,7 @@
   background-color: rgb(62, 112, 220);
   color: white;
   border: none;
+}
+.description {
+  padding: 0.2rem;
 }
