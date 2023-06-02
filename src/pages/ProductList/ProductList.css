@@ -12,11 +12,18 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
+.product-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  transition: box-shadow 0.3s ease-in-out;
+}
+
 .product-card img {
   width: 210px;
   height: 270px;
   object-fit: cover;
   border-radius: 1rem;
+  cursor: pointer;
 }
 .product-card .trending {
   position: absolute;
@@ -73,6 +80,7 @@
   background-color: rgb(62, 112, 220);
   color: white;
   border: none;
+  cursor: pointer;
 }
 .description {
   padding: 0.2rem;
