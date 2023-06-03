@@ -55,7 +55,7 @@ html {
 .navigation {
   padding-top: 0.5rem;
   padding-bottom: 0.2rem;
-  background-color: black;
+  background-color: rgb(62, 112, 220);
   color: white;
   display: grid;
   grid-template-areas:
@@ -67,7 +67,7 @@ html {
   .navigation {
     padding-top: 0.5rem;
     padding-bottom: 0.2rem;
-    background-color: black;
+    background-color: rgb(62, 112, 220);
     color: white;
     display: grid;
     grid-template-areas: "brandName searchBar  icons";
