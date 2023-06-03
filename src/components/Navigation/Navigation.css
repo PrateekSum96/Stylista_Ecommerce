@@ -83,4 +83,10 @@ html {
     display: grid;
     grid-template-areas: "brandName searchBar  icons";
   }
+  .nav-button {
+    margin-bottom: 0.9rem;
+    margin-top: -0.1rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+  }
 }
