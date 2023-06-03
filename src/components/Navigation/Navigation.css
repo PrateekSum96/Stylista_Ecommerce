@@ -63,14 +63,14 @@ html {
     "searchBar  searchBar";
 }
 
-button {
+.nav-button {
   margin-bottom: 0.4rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border-radius: 0.5rem;
   border: 2px solid white;
   box-sizing: border-box;
 }
-button:hover {
+.nav-button:hover {
   border: 2px solid black;
 }
 

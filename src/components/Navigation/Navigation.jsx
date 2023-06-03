@@ -13,7 +13,7 @@ export const Navigation = () => {
           <input type="text" className="search" placeholder="Search products" />
         </div>
         <div className="icons">
-          <button>Login</button>
+          <button className="nav-button">Login</button>
           <NavLink to="/productList">
             <i class="fa-sharp fa-regular fa-compass fa-xl"></i>
           </NavLink>
