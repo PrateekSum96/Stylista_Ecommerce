@@ -27,7 +27,7 @@
 }
 .product-card .trending {
   position: absolute;
-  bottom: 22.1rem;
+  bottom: 22.2rem;
   background-color: rgb(255, 128, 0);
   color: white;
   width: 30%;
@@ -61,6 +61,15 @@
   font-size: 1.2rem;
   padding-left: 0.2rem;
 }
+
+.title a {
+  text-decoration: none;
+  color: black;
+}
+
+.title a:hover {
+  text-decoration: underline;
+}
 .product-card .price span {
   padding: 0.1rem 0.2rem;
 }
@@ -85,7 +94,12 @@
 .description {
   padding: 0.2rem;
 }
-
+.btn button {
+  border: 1px solid white;
+}
+.btn button:hover {
+  border: 1px solid black;
+}
 @media screen and (min-width: 768px) {
   .product-list {
     display: flex;
