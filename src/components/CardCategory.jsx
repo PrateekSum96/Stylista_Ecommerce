@@ -1,4 +1,4 @@
-export const Card_Category = ({ category }) => {
+export const CardCategory = ({ category }) => {
   return (
     <>
       <img src={category.url} alt={category.categoryName} />

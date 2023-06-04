@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
 import { NavLink } from "react-router-dom";
-import { Card_Category } from "../../components/CardCategory";
+import { CardCategory } from "../../components/CardCategory";
 export const Home = () => {
   const [showData, setData] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -37,7 +37,7 @@ export const Home = () => {
           <div className="category">
             {showData.map((category) => (
               <div className="card">
-                <Card_Category category={category} />
+                <CardCategory category={category} />
               </div>
             ))}
           </div>
