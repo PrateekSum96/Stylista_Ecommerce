@@ -6,7 +6,7 @@ export const Navigation = () => {
     <div>
       <nav className="navigation">
         <div className="brand-name">
-          <NavLink to="/">test</NavLink>
+          <NavLink to="/">Test</NavLink>
         </div>
         <div className="search-bar">
           <i class="fa-solid fa-magnifying-glass"></i>
