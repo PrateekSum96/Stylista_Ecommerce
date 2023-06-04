@@ -1,12 +1,17 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext/CartContext";
 import "./ProductList.css";
+import { Filters } from "./ProductFilter";
+import { NavLink } from "react-router-dom";
 
 export const ProductList = () => {
   const { showItem } = useContext(CartContext);
-  console.log(showItem);
+
   return (
-    <div>
+    <div className="product-list">
+      <div className="filter-items">
+        <Filters />
+      </div>
       <div className="product">
         {showItem.map((item) => (
           <div>

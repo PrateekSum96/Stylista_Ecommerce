@@ -27,7 +27,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Allen Solly",
-    description: "White floral printed Casual shirt",
+    description: "White floral printed shirt",
     details:
       "White floral printed opaque Casual shirt ,has a spread collar, button placket, 1 pocket, long roll-up sleeves, curved hem",
     original_price: "1999",

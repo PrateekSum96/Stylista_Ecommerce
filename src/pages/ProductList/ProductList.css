@@ -6,13 +6,16 @@
 
 .product-card {
   position: relative;
-  background-color: #c1bfc2;
+  background-color: white;
   margin: 2rem;
   border-radius: 1rem;
-  border: 1px solid black;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
 .product-card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .product-card img {
@@ -20,26 +23,24 @@
   height: 270px;
   object-fit: cover;
   border-radius: 1rem;
+  cursor: pointer;
 }
 .product-card .trending {
   position: absolute;
-  bottom: 20.5rem;
+  bottom: 22.2rem;
   background-color: rgb(255, 128, 0);
   color: white;
   width: 30%;
-  padding: 0.3rem 0.3rem;
+  padding: 0.3rem 0rem;
   border-top-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  padding-left: 0.2rem;
 }
 .product-card .rating-review-size {
   display: flex;
   justify-content: space-between;
   position: relative;
-  bottom: 1.8rem;
-}
-
-i {
-  padding-right: 0.2rem;
+  bottom: 1.79rem;
 }
 
 .product-card .rating-review-size span {
@@ -55,15 +56,24 @@ i {
   padding: 0.2rem 0.4rem;
   color: white;
 }
-.product-card .title {
+.title {
   margin-top: -1.5rem;
   font-size: 1.2rem;
   padding-left: 0.2rem;
 }
-.product-card .price span {
+
+.title a {
+  text-decoration: none;
+  color: black;
+}
+
+.title a:hover {
+  text-decoration: underline;
+}
+.product-card .price-info span {
   padding: 0.1rem 0.2rem;
 }
-.product-card .price .original-price {
+.product-card .price-info .original-price {
   color: gray;
   text-decoration: line-through;
 }
@@ -81,18 +91,20 @@ i {
   border: none;
   cursor: pointer;
 }
-
-#out-of-stock {
-  opacity: 0.5;
-  cursor: not-allowed;
-  position: relative;
+.description {
+  padding: 0.2rem;
 }
-#out-of-stock::after {
-  content: " Out of stock";
-  position: absolute;
-  color: red;
-  font-size: 2rem;
-  font-weight: 700;
-  bottom: 13rem;
-  left: 1rem;
+.btn button {
+  border: 1px solid white;
+}
+.btn button:hover {
+  border: 1px solid black;
+}
+@media screen and (min-width: 768px) {
+  .product-list {
+    display: flex;
+  }
+  .product {
+    border-left: 2px solid white;
+  }
 }
