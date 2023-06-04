@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "./SignUp.css";
+import { useState } from "react";
 
 export const SignUp = () => {
+  const [passwordType, setPasswordType] = useState(false);
+  const showPassword = () => {
+    setPasswordType(() => !passwordType);
+  };
   return (
     <div>
       <div className="signUp-card">
@@ -24,7 +29,13 @@ export const SignUp = () => {
         <div className="password-signUp">
           <label htmlFor="password">Password</label>
           <br />
-          <input type="password" id="password" />
+          <input type={passwordType ? "text" : "password"} id="password" />
+          <div className="signup-icon">
+            <i
+              class={`fa-solid ${passwordType ? "fa-eye-slash" : "fa-eye"}`}
+              onClick={showPassword}
+            ></i>
+          </div>
         </div>
         <div className="btn-signUp">
           <button>Create New Account</button>
