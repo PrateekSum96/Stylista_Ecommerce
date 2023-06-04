@@ -70,10 +70,10 @@
 .title a:hover {
   text-decoration: underline;
 }
-.product-card .price-info span {
+.product-card .price span {
   padding: 0.1rem 0.2rem;
 }
-.product-card .price-info .original-price {
+.product-card .price .original-price {
   color: gray;
   text-decoration: line-through;
 }
@@ -86,7 +86,7 @@
 .product-card button {
   border-radius: 0.5rem;
   padding: 0.3rem 0.4rem;
-  background-color: black;
+  background-color: rgb(62, 112, 220);
   color: white;
   border: none;
   cursor: pointer;
