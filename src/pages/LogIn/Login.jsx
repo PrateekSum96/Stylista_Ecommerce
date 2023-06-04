@@ -1,7 +1,13 @@
 import { NavLink } from "react-router-dom";
 import "./Login.css";
+import { useState } from "react";
 
 export const LogIn = () => {
+  const [passwordType, setPasswordType] = useState(false);
+  const showPassword = () => {
+    setPasswordType(() => !passwordType);
+  };
+  console.log(passwordType);
   return (
     <div>
       <div className="signIn-card">
@@ -14,7 +20,13 @@ export const LogIn = () => {
         <div className="password-signIn">
           <label htmlFor="password">Password</label>
           <br />
-          <input type="password" id="password" />
+          <input type={passwordType ? "text" : "password"} id="password" />
+          <div className="signin-icon">
+            <i
+              class={`fa-solid ${passwordType ? "fa-eye-slash" : "fa-eye"}`}
+              onClick={showPassword}
+            ></i>
+          </div>
         </div>
         <div className="btn-signIn">
           <button>Log In</button>
