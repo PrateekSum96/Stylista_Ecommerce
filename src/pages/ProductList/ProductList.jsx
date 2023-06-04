@@ -35,7 +35,7 @@ export const ProductList = () => {
               <NavLink to={`/productDetail/${item.id}`}>{item.title}</NavLink>
             </div>
             <div className="description">{item.description}</div>
-            <div className="price">
+            <div className="price-info">
               <span>&#8377;{item.price}</span>
               <span className="original-price">
                 &#8377;{item.original_price}

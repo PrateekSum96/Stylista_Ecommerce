@@ -70,10 +70,10 @@
 .title a:hover {
   text-decoration: underline;
 }
-.product-card .price span {
+.product-card .price-info span {
   padding: 0.1rem 0.2rem;
 }
-.product-card .price .original-price {
+.product-card .price-info .original-price {
   color: gray;
   text-decoration: line-through;
 }
