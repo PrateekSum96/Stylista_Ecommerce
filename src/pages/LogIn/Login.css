@@ -42,6 +42,15 @@ input {
   color: white;
   font-size: 1.2rem;
 }
+.signin-icon {
+  position: relative;
+}
+.signin-icon .fa-solid {
+  position: absolute;
+  bottom: 0.4rem;
+  right: 2.2rem;
+  color: rgb(6, 72, 214);
+}
 
 @media screen and (min-width: 768px) {
   .signIn-card {
