@@ -9,6 +9,7 @@ import { Account } from "./pages/Account/Account";
 import { ProductDetail } from "./pages/ProductDetail/ProductDetail";
 import { LogIn } from "./pages/LogIn/Login";
 import { SignUp } from "./pages/SignUp/SignUp";
+import Mockman from "mockman-js";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/productDetail/:productId" element={<ProductDetail />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/mockman" element={<Mockman />} />
       </Routes>
     </div>
   );
