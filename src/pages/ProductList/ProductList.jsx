@@ -4,16 +4,23 @@ import "./ProductList.css";
 import { Filters } from "./ProductFilter";
 import { NavLink } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const ProductList = () => {
   const { showItem } = useContext(CartContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const { addToCart, cart } = useContext(CartListContext);
+
   const btnClick = (item) => {
-    return cart?.find((cartItem) => cartItem.id === item.id)
-      ? ""
-      : addToCart(item);
+    if (!isLoggedIn) {
+      toast("Please log in to continue!");
+    } else {
+      return cart?.find((cartItem) => cartItem.id === item.id)
+        ? ""
+        : addToCart(item);
+    }
   };
 
   return (
