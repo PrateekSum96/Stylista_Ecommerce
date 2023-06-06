@@ -30,7 +30,7 @@ export const Cart = () => {
                     <button onClick={() => removeFromCart(cartItem)}>
                       Remove from Cart
                     </button>
-                    <button>Add to WishList</button>
+                    <button>Add To WishList</button>
                   </div>
                 </div>
               </div>
