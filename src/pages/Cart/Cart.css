@@ -1,0 +1,40 @@
+.cart-card {
+  width: 400px;
+  height: 190px;
+  border: 1px solid black;
+  margin: 1rem;
+  display: flex;
+  border-radius: 1rem;
+  background-color: #3e70dc;
+  color: white;
+}
+
+img {
+  width: 150px;
+  height: 190px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 1rem;
+}
+.cart-info {
+  margin: 0.5rem;
+}
+.cart-info div {
+  margin: 0.5rem;
+}
+.cart-original-price {
+  text-decoration: line-through;
+}
+.cart-btn button {
+  margin: 0.2rem;
+  border-radius: 0.3rem;
+  border: 1px solid white;
+  padding: 0.2rem;
+  background-color: white;
+}
+.cart-btn button:hover {
+  background-color: #3e70dc;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
