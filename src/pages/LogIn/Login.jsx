@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
+  // const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const showPassword = () => {
     setPasswordType(() => !passwordType);
