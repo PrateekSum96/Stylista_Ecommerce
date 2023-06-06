@@ -3,9 +3,16 @@ import { CartContext } from "../../contexts/CartContext/CartContext";
 import "./ProductList.css";
 import { Filters } from "./ProductFilter";
 import { NavLink } from "react-router-dom";
+import { CartListContext } from "../../contexts/CartContext/CartListContext";
 
 export const ProductList = () => {
   const { showItem } = useContext(CartContext);
+  const { addToCart, cart } = useContext(CartListContext);
+  const btnClick = (item) => {
+    return cart?.find((cartItem) => cartItem.id === item.id)
+      ? ""
+      : addToCart(item);
+  };
 
   return (
     <div className="product-list">
@@ -41,11 +48,25 @@ export const ProductList = () => {
                 &#8377;{item.original_price}
               </span>
             </div>
+            {!item.in_stock ? (
+              <button id="btn-out-of-stock" disabled>
+                Out of Stock
+              </button>
+            ) : (
+              <div className="btn">
+                <button onClick={() => btnClick(item)}>
+                  {cart?.find((cartItem) => cartItem.id === item.id) ? (
+                    <NavLink to="/cart" className="nav-link">
+                      Go to Cart
+                    </NavLink>
+                  ) : (
+                    "Add to cart"
+                  )}
+                </button>
 
-            <div className="btn">
-              <button>Add to cart</button>
-              <button>Add to wishlist</button>
-            </div>
+                <button>Add to wishlist</button>
+              </div>
+            )}
           </div>
         ))}
       </div>

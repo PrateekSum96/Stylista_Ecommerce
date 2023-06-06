@@ -7,18 +7,24 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import { CartContext, CartProvider } from "./contexts/CartContext/CartContext";
 import { AuthContext, AuthProvider } from "./contexts/Auth/AuthContext";
+import {
+  CartListContext,
+  CartListProvider,
+} from "./contexts/CartContext/CartListContext";
 // Call make Server
 makeServer();
 
-export { CartContext, AuthContext };
+export { CartContext, AuthContext, CartListContext };
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
+        <CartListProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </CartListProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,

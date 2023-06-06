@@ -101,6 +101,20 @@
 .btn button:hover {
   border: 1px solid black;
 }
+#btn-out-of-stock {
+  background-color: red;
+  padding: 0.5rem;
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+#btn-out-of-stock:hover {
+  cursor: not-allowed;
+}
 @media screen and (min-width: 768px) {
   .product-list {
     display: flex;
