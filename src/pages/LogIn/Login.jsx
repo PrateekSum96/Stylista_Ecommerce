@@ -5,15 +5,37 @@ import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
+  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const showPassword = () => {
     setPasswordType(() => !passwordType);
   };
   const location = useLocation();
   const navigate = useNavigate();
-  const handleClick = () => {
-    setIsLoggedIn(!isLoggedIn);
-    navigate(location?.state?.from?.pathname);
+  const handleClick = async () => {
+    if (isLoggedIn) {
+      setIsLoggedIn(false);
+    } else {
+      try {
+        const cred = { email: "johnJacob@stylista.com", password: "johnJocob" };
+        const response = await fetch("/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify(cred),
+        });
+        setIsLoggedIn(true);
+        navigate(location?.state?.from?.pathname);
+        const data = await response.json();
+        console.log(data);
+
+        localStorage.setItem("token", data.encodedToken);
+        console.log(localStorage.getItem("token", data.encodedToken));
+      } catch (e) {
+        setIsLoggedIn(false);
+        console.error(e);
+      }
+    }
+    // setIsLoggedIn(!isLoggedIn);
+    //
   };
   console.log(passwordType);
   return (
@@ -38,7 +60,9 @@ export const LogIn = () => {
         </div>
         <div className="btn-signIn">
           <button>Log In</button>
-          <button onClick={handleClick}>Login As a Guest</button>
+          <button onClick={handleClick}>
+            {isLoggedIn ? "Log out" : "Login As a Guest"}
+          </button>
         </div>
         <div className="signUp-signIn">
           Don't have an account?<NavLink to="/signup">sign up</NavLink>
