@@ -8,22 +8,28 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { CartContext, CartProvider } from "./contexts/CartContext/CartContext";
 import { AuthContext, AuthProvider } from "./contexts/Auth/AuthContext";
 import {
+  WishListContext,
+  WishListProvider,
+} from "./contexts/CartContext/WishListContext";
+import {
   CartListContext,
   CartListProvider,
 } from "./contexts/CartContext/CartListContext";
 // Call make Server
 makeServer();
 
-export { CartContext, AuthContext, CartListContext };
+export { CartContext, AuthContext, CartListContext, WishListContext };
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
         <CartListProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
+          <WishListProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </WishListProvider>
         </CartListProvider>
       </AuthProvider>
     </Router>
