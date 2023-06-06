@@ -1,11 +1,19 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const showPassword = () => {
     setPasswordType(() => !passwordType);
+  };
+  const location = useLocation();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    setIsLoggedIn(!isLoggedIn);
+    navigate(location?.state?.from?.pathname);
   };
   console.log(passwordType);
   return (
@@ -30,7 +38,7 @@ export const LogIn = () => {
         </div>
         <div className="btn-signIn">
           <button>Log In</button>
-          <button>Login As a Guest</button>
+          <button onClick={handleClick}>Login As a Guest</button>
         </div>
         <div className="signUp-signIn">
           Don't have an account?<NavLink to="/signup">sign up</NavLink>
