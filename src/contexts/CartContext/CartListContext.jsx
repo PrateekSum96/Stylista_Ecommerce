@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CartListContext = createContext();
 
@@ -16,6 +18,7 @@ export const CartListProvider = ({ children }) => {
       });
 
       const result = await response.json();
+      toast("Added to cart");
       //   console.log(result);
       setCart(result.cart);
     } catch (error) {
@@ -34,6 +37,7 @@ export const CartListProvider = ({ children }) => {
 
       const result = await response.json();
       console.log(result);
+      toast("Removed from cart");
       setCart(result.cart);
     } catch (error) {
       console.error("Error:", error);

@@ -4,6 +4,8 @@ import "./ProductList.css";
 import { Filters } from "./ProductFilter";
 import { NavLink } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ProductList = () => {
   const { showItem } = useContext(CartContext);
@@ -70,6 +72,18 @@ export const ProductList = () => {
           </div>
         ))}
       </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };
