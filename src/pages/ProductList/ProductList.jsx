@@ -4,24 +4,16 @@ import "./ProductList.css";
 import { Filters } from "./ProductFilter";
 import { NavLink } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../../contexts/Auth/AuthContext";
+
+import { WishListContext } from "../../contexts/CartContext/WishListContext";
 
 export const ProductList = () => {
   const { showItem } = useContext(CartContext);
-  const { isLoggedIn } = useContext(AuthContext);
-  const { addToCart, cart } = useContext(CartListContext);
 
-  const btnClick = (item) => {
-    if (!isLoggedIn) {
-      toast("Please log in to continue!");
-    } else {
-      return cart?.find((cartItem) => cartItem.id === item.id)
-        ? ""
-        : addToCart(item);
-    }
-  };
+  const { cart, btnClick } = useContext(CartListContext);
+  const { showWishList, btnClickWishList } = useContext(WishListContext);
 
   return (
     <div className="product-list">
@@ -72,8 +64,17 @@ export const ProductList = () => {
                     "Add to cart"
                   )}
                 </button>
-
-                <button>Add to wishlist</button>
+                <button onClick={() => btnClickWishList(item)}>
+                  {showWishList?.find(
+                    (wishListItem) => wishListItem.id === item.id
+                  ) ? (
+                    <NavLink to="/wishList" className="nav-link">
+                      Go to Wishlist
+                    </NavLink>
+                  ) : (
+                    "Add to WishList"
+                  )}
+                </button>
               </div>
             )}
           </div>
