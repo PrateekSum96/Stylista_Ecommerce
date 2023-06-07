@@ -14,14 +14,14 @@ export const CartListProvider = ({ children }) => {
       const response = await fetch("/api/user/cart", {
         method: "POST",
         headers: {
-          authorization: token,
+          authorization: localStorage?.getItem("token"),
         },
         body: JSON.stringify({ product: item }),
       });
 
       const result = await response.json();
       toast("Added to cart");
-      //   console.log(result);
+      console.log(result);
       setCart(result.cart);
     } catch (error) {
       console.error("Error:", error);

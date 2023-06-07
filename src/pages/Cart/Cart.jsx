@@ -14,7 +14,7 @@ export const Cart = () => {
   return (
     <div>
       <div>
-        {cart.length === 0 ? (
+        {cart?.length === 0 ? (
           <h1 id="cart-empty-msg">Your cart is empty!!</h1>
         ) : (
           cart?.map(
