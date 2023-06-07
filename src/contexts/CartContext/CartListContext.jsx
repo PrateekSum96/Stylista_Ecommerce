@@ -47,7 +47,7 @@ export const CartListProvider = ({ children }) => {
   };
   const btnClick = (item) => {
     if (!isLoggedIn) {
-      toast("Please log in to continue!");
+      toast("Please login to continue!");
     } else {
       return cart?.find((cartItem) => cartItem.id === item.id)
         ? ""

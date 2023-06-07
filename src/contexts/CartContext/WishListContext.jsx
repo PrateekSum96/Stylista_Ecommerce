@@ -30,7 +30,7 @@ export const WishListProvider = ({ children }) => {
   };
   const btnClickWishList = (item) => {
     if (!isLoggedIn) {
-      toast("Please log in to continue!");
+      toast("Please login to continue!");
     } else {
       return showWishList?.find((wishListItem) => wishListItem.id === item.id)
         ? ""

@@ -1,0 +1,11 @@
+.account {
+  text-align: center;
+}
+.account-btn {
+  padding: 0.5rem 0.3rem;
+  color: white;
+  background-color: rgb(62, 112, 220);
+  border-radius: 0.5rem;
+  border: 2px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

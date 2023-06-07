@@ -14,6 +14,7 @@ export const LogIn = () => {
   const navigate = useNavigate();
   const handleClick = async () => {
     if (isLoggedIn) {
+      localStorage.removeItem("token");
       setIsLoggedIn(false);
     } else {
       try {
