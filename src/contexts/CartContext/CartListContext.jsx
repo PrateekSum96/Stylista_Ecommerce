@@ -1,11 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../Auth/AuthContext";
 
 export const CartListContext = createContext();
 
 export const CartListProvider = ({ children }) => {
   const token = localStorage?.getItem("token");
+  const { isLoggedIn } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
   const addToCart = async (item) => {
     try {
@@ -43,9 +45,21 @@ export const CartListProvider = ({ children }) => {
       console.error("Error:", error);
     }
   };
+  const btnClick = (item) => {
+    if (!isLoggedIn) {
+      toast("Please log in to continue!");
+    } else {
+      return cart?.find((cartItem) => cartItem.id === item.id)
+        ? ""
+        : addToCart(item);
+    }
+  };
+
   //   console.log(cart);
   return (
-    <CartListContext.Provider value={{ addToCart, cart, removeFromCart }}>
+    <CartListContext.Provider
+      value={{ addToCart, cart, removeFromCart, btnClick }}
+    >
       {children}
     </CartListContext.Provider>
   );

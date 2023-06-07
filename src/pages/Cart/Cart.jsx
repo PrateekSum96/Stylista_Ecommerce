@@ -1,12 +1,14 @@
 import { useContext } from "react";
-
+import { NavLink } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import "./Cart.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { WishListContext } from "../../contexts/CartContext/WishListContext";
 
 export const Cart = () => {
   const { cart, removeFromCart } = useContext(CartListContext);
+  const { showWishList, btnClickWishList } = useContext(WishListContext);
 
   console.log("cart", cart);
   return (
@@ -33,7 +35,20 @@ export const Cart = () => {
                     <button onClick={() => removeFromCart(cartItem)}>
                       Remove from Cart
                     </button>
-                    <button>Add To WishList</button>
+                    <button
+                      onClick={() => btnClickWishList(cartItem)}
+                      id="wishlist-btn"
+                    >
+                      {showWishList?.find(
+                        (wishListItem) => wishListItem.id === cartItem.id
+                      ) ? (
+                        <NavLink to="/wishList" className="nav-link">
+                          Go to Wishlist
+                        </NavLink>
+                      ) : (
+                        "Add to WishList"
+                      )}
+                    </button>
                   </div>
                 </div>
               </div>
