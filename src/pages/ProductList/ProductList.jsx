@@ -21,7 +21,7 @@ export const ProductList = () => {
         <Filters />
       </div>
       <div className="product">
-        {showItem.map((item) => (
+        {showItem?.map((item) => (
           <div className="product-card">
             <NavLink to={`/productDetail/${item.id}`}>
               <img src={item.image_url} alt={item.title} />

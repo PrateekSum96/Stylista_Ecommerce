@@ -15,9 +15,9 @@ export const Cart = () => {
     <div>
       <div>
         {cart.length === 0 ? (
-          <h1>Your cart is empty!!</h1>
+          <h1 id="cart-empty-msg">Your cart is empty!!</h1>
         ) : (
-          cart.map(
+          cart?.map(
             (cartItem) => (
               //
               <div className="cart-card">
