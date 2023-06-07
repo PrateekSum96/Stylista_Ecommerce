@@ -1,3 +1,6 @@
+.cart-container {
+  display: flex;
+}
 #cart-empty-msg {
   text-align: center;
 }
@@ -41,5 +44,33 @@ img {
   background-color: #112b63;
   color: white;
   border: 1px solid white;
+  cursor: pointer;
+}
+
+.cart-checklist-info {
+  width: 250px;
+  height: 170px;
+  background-color: #3e70dc;
+  margin: 1rem;
+  border-radius: 1rem;
+  color: white;
+  padding: 0.4rem;
+}
+
+.cart-checklist-info div {
+  margin: 0.5rem;
+}
+.cart-checklist-info button {
+  display: block;
+  margin: auto;
+  padding: 0.3rem 0.5rem;
+  color: white;
+  background-color: #3e70dc;
+  border: 2px solid white;
+  border-radius: 0.3rem;
+}
+
+.cart-checklist-info button:hover {
+  background-color: #0f317a;
   cursor: pointer;
 }

@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import "./Cart.css";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import { WishListContext } from "../../contexts/CartContext/WishListContext";
 
 export const Cart = () => {
   const { cart, removeFromCart } = useContext(CartListContext);
   const { showWishList, btnClickWishList } = useContext(WishListContext);
 
+  const totalPrice = cart?.reduce((acc, curr) => acc + Number(curr.price), 0);
   console.log("cart", cart);
   return (
     <div>
@@ -17,7 +17,13 @@ export const Cart = () => {
         {cart?.length === 0 ? (
           <h1 id="cart-empty-msg">Your cart is empty!!</h1>
         ) : (
-          cart?.map(
+          ""
+        )}
+      </div>
+
+      <div className="cart-container">
+        <div>
+          {cart?.map(
             (cartItem) => (
               //
               <div className="cart-card">
@@ -54,21 +60,20 @@ export const Cart = () => {
               </div>
             )
             //
-          )
-        )}
+          )}
+        </div>
+        <div className="cart-checklist-info">
+          <div>Your Cart: {cart.length} items</div>
+          <hr />
+          <div>Sub Total: &#8377;{totalPrice}</div>
+          <div>Discount: &#8377;{Math.round(totalPrice * 0.1)}</div>
+          <hr />
+          <div>
+            Total Price: &#8377;{totalPrice - Math.round(totalPrice * 0.1)}
+          </div>
+          <button>Checkout</button>
+        </div>
       </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
     </div>
   );
 };
