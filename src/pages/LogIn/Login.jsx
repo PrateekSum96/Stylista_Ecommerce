@@ -2,6 +2,8 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
@@ -12,10 +14,11 @@ export const LogIn = () => {
   };
   const location = useLocation();
   const navigate = useNavigate();
+
   const handleClick = async () => {
     if (isLoggedIn) {
       localStorage.removeItem("token");
-
+      toast.success("Logout successful!!");
       setIsLoggedIn(false);
     } else {
       try {
@@ -28,7 +31,7 @@ export const LogIn = () => {
         navigate(location?.state?.from?.pathname);
         const data = await response.json();
         console.log(data);
-
+        toast.success("Login successful!!");
         localStorage.setItem("token", data.encodedToken);
         console.log(localStorage.getItem("token", data.encodedToken));
       } catch (e) {

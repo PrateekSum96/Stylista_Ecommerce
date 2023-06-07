@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import "./Account.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Account = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const handleClick = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    toast.success("Logout successful");
   };
   return (
     <div className="account">
