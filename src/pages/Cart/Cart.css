@@ -1,5 +1,6 @@
 .cart-container {
   display: flex;
+  justify-content: center;
 }
 #cart-empty-msg {
   text-align: center;
