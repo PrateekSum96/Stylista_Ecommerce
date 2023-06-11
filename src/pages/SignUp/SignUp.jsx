@@ -1,49 +1,50 @@
-import { NavLink } from "react-router-dom";
 import "./SignUp.css";
-import { useState } from "react";
+import { useContext } from "react";
+import { SignUpComponent } from "./SignUpComponent";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { useNavigate } from "react-router";
 
 export const SignUp = () => {
-  const [passwordType, setPasswordType] = useState(false);
-  const showPassword = () => {
-    setPasswordType(() => !passwordType);
+  const navigate = useNavigate();
+
+  const { setIsLoggedIn, personInfo } = useContext(AuthContext);
+
+  const { firstName, lastName, email, password, confirmPassword } = personInfo;
+
+  const signUp = async () => {
+    try {
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        body: JSON.stringify({ firstName, lastName, email, password }),
+      });
+
+      const result = await response.json();
+
+      if (result.errors) {
+        toast.error(result.errors[0]);
+      } else {
+        setIsLoggedIn(true);
+        localStorage.setItem("token", result.encodedToken);
+
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+  const handleSignUp = () => {
+    if (password === confirmPassword) {
+      signUp();
+    } else {
+      toast.error("Passwords are not matching !!!");
+    }
+  };
+
   return (
     <div>
-      <div className="signUp-card">
-        <h2>Sign Up</h2>
-        <div className="signUp-firstName">
-          <label htmlFor="first-name">First Name</label>
-          <br />
-          <input type="text" id="first-name" />
-        </div>
-        <div className="signUp-lastName">
-          <label htmlFor="last-name">Last Name</label>
-          <br />
-          <input type="text" id="last-name" />
-        </div>
-        <div className="email-signUp">
-          <label htmlFor="email">Email</label>
-          <br />
-          <input type="email" id="email" />
-        </div>
-        <div className="password-signUp">
-          <label htmlFor="password">Password</label>
-          <br />
-          <input type={passwordType ? "text" : "password"} id="password" />
-          <div className="signup-icon">
-            <i
-              class={`fa-solid ${passwordType ? "fa-eye-slash" : "fa-eye"}`}
-              onClick={showPassword}
-            ></i>
-          </div>
-        </div>
-        <div className="btn-signUp">
-          <button>Create New Account</button>
-        </div>
-        <div className="signUp">
-          Already have an account?<NavLink to="/login">Log In</NavLink>
-        </div>
-      </div>
+      <SignUpComponent handleSignUp={handleSignUp} />
     </div>
   );
 };
