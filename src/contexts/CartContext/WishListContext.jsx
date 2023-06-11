@@ -21,7 +21,6 @@ export const WishListProvider = ({ children }) => {
 
       const result = await response.json();
 
-      console.log(result.wishlist);
       setWishList(result.wishlist);
       toast("Added to Wishlist");
     } catch (error) {
@@ -38,7 +37,6 @@ export const WishListProvider = ({ children }) => {
     }
   };
   const removeFromWishlist = async (item) => {
-    console.log(item);
     try {
       const response = await fetch(`/api/user/wishlist/${item._id}`, {
         method: "DELETE",
@@ -48,7 +46,7 @@ export const WishListProvider = ({ children }) => {
       });
 
       const result = await response.json();
-      console.log(result);
+
       toast("Removed from wishlist");
 
       setWishList(result.wishlist);
@@ -57,7 +55,6 @@ export const WishListProvider = ({ children }) => {
     }
   };
 
-  console.log(showWishList);
   return (
     <WishListContext.Provider
       value={{
