@@ -3,12 +3,9 @@ import { AuthContext } from "../contexts/Auth/AuthContext";
 import { Navigate, useLocation } from "react-router";
 
 export const RequireAuth = ({ children }) => {
-  const token = localStorage?.getItem("token");
   const location = useLocation();
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  if (token !== null) {
-    setIsLoggedIn(true);
-  }
+  const { isLoggedIn } = useContext(AuthContext);
+
   return isLoggedIn ? (
     children
   ) : (

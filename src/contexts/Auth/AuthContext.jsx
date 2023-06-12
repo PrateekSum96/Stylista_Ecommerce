@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
     });
     toast.success("Logout successful");
   };
+
   return (
     <AuthContext.Provider
       value={{

@@ -7,42 +7,48 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
-  // const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+
+  const { setIsLoggedIn, personInfo } = useContext(AuthContext);
+
+  const { email, password } = personInfo;
+
   const showPassword = () => {
     setPasswordType(() => !passwordType);
   };
   const location = useLocation();
   const navigate = useNavigate();
+  let cred;
 
-  const handleClick = async () => {
-    if (isLoggedIn) {
-      localStorage.removeItem("token");
-      toast.success("Logout successful!!");
-      setIsLoggedIn(false);
-    } else {
-      try {
-        const cred = { email: "johnJacob@stylista.com", password: "johnJocob" };
-        const response = await fetch("/api/auth/login", {
-          method: "POST",
-          body: JSON.stringify(cred),
-        });
-        setIsLoggedIn(true);
-        navigate(location?.state?.from?.pathname);
-        const data = await response.json();
-        console.log(data);
-        toast.success("Login successful!!");
-        localStorage.setItem("token", data.encodedToken);
-        console.log(localStorage.getItem("token", data.encodedToken));
-      } catch (e) {
-        setIsLoggedIn(false);
-        console.error(e);
-      }
-    }
-    // setIsLoggedIn(!isLoggedIn);
-    //
+  const userLogin = () => {
+    cred = { email: { email }, password: { password } };
+    handleLogin();
   };
-  console.log(passwordType);
+  const guestLogin = () => {
+    cred = { email: "johnJacob@stylista.com", password: "johnJocob" };
+    handleLogin();
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify(cred),
+      });
+      setIsLoggedIn(true);
+      navigate(location?.state?.from?.pathname);
+      const data = await response.json();
+
+      toast.success("Login successful!!");
+      localStorage.setItem("token", data.encodedToken);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  if (localStorage.getItem("token")) {
+    setIsLoggedIn(true);
+    navigate("/");
+  }
   return (
     <div>
       <div className="signIn-card">
@@ -64,10 +70,8 @@ export const LogIn = () => {
           </div>
         </div>
         <div className="btn-signIn">
-          <button>Log In</button>
-          <button onClick={handleClick}>
-            {isLoggedIn ? "Log out" : "Login As a Guest"}
-          </button>
+          <button onClick={userLogin}>Log In</button>
+          <button onClick={guestLogin}>Login As a Guest</button>
         </div>
         <div className="signUp-signIn">
           Don't have an account?<NavLink to="/signup">sign up</NavLink>
