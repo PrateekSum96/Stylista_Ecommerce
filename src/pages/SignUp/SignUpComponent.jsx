@@ -14,6 +14,7 @@ export const SignUpComponent = ({ handleSignUp }) => {
           confirmIcon: !confirmIcon,
         }));
   };
+
   return (
     <>
       <div className="signUp-card">

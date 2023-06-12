@@ -1,6 +1,4 @@
 import { createContext, useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export const AuthContext = createContext();
 
@@ -16,19 +14,6 @@ export const AuthProvider = ({ children }) => {
     confirmIcon: false,
   });
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    setPersonInfo({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-    toast.success("Logout successful");
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -36,7 +21,6 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn,
         personInfo,
         setPersonInfo,
-        handleLogout,
       }}
     >
       {children}

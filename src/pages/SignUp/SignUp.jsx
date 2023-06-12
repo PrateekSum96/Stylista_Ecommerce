@@ -26,6 +26,8 @@ export const SignUp = () => {
         toast.error(result.errors[0]);
       } else {
         setIsLoggedIn(true);
+        console.log(result);
+
         localStorage.setItem("token", result.encodedToken);
 
         navigate("/");
