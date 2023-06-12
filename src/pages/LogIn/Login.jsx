@@ -20,14 +20,13 @@ export const LogIn = () => {
   let cred;
 
   const userLogin = () => {
-    cred = { email: { email }, password: { password } };
+    cred = { email, password };
     handleLogin();
   };
   const guestLogin = () => {
     cred = { email: "johnJacob@stylista.com", password: "johnJocob" };
     setPersonInfo((info) => ({ ...info, email: cred.email }));
     setPersonInfo((info) => ({ ...info, password: cred.password }));
-
     handleLogin();
   };
 
@@ -37,12 +36,17 @@ export const LogIn = () => {
         method: "POST",
         body: JSON.stringify(cred),
       });
-      setIsLoggedIn(true);
-      navigate(location?.state?.from?.pathname);
       const data = await response.json();
 
-      toast.success("Login successful!!");
-      localStorage.setItem("token", data.encodedToken);
+      if (data.errors) {
+        toast.error(data.errors[0]);
+      } else {
+        setIsLoggedIn(true);
+        navigate(location?.state?.from?.pathname);
+
+        toast.success("Login successful!!");
+        localStorage.setItem("token", data.encodedToken);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -52,7 +56,7 @@ export const LogIn = () => {
     setIsLoggedIn(true);
     navigate("/");
   }
-  console.log(personInfo);
+
   return (
     <div>
       <div className="signIn-card">
@@ -99,9 +103,7 @@ export const LogIn = () => {
           </div>
           <div className="btn-signIn">
             <button type="submit">Log In</button>
-            <button type="submit" onClick={guestLogin}>
-              Login As a Guest
-            </button>
+            <button onClick={guestLogin}>Login As a Guest</button>
           </div>
           <div className="signUp-signIn">
             Don't have an account?<NavLink to="/signup">sign up</NavLink>

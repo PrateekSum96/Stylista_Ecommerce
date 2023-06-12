@@ -29,7 +29,7 @@ export const SignUp = () => {
         console.log(result);
 
         localStorage.setItem("token", result.encodedToken);
-
+        toast.success("Login successful!!");
         navigate("/");
       }
     } catch (error) {
