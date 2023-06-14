@@ -8,7 +8,20 @@ export const WishListContext = createContext();
 export const WishListProvider = ({ children }) => {
   const [showWishList, setWishList] = useState([]);
   const { isLoggedIn } = useContext(AuthContext);
-  const token = localStorage?.getItem("token");
+
+  const wishlistToShow = async () => {
+    try {
+      const response = await fetch("/api/user/wishlist", {
+        headers: { authorization: localStorage?.getItem("token") },
+      });
+      const result = await response.json();
+
+      setWishList(result?.wishlist);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const addToWishList = async (item) => {
     try {
       const response = await fetch("/api/user/wishlist", {
@@ -20,13 +33,13 @@ export const WishListProvider = ({ children }) => {
       });
 
       const result = await response.json();
-
-      setWishList(result.wishlist);
       toast("Added to Wishlist");
+      setWishList(result?.wishlist);
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
   const btnClickWishList = (item) => {
     if (!isLoggedIn) {
       toast("Please login to continue!");
@@ -36,20 +49,19 @@ export const WishListProvider = ({ children }) => {
         : addToWishList(item);
     }
   };
+
   const removeFromWishlist = async (item) => {
     try {
       const response = await fetch(`/api/user/wishlist/${item._id}`, {
         method: "DELETE",
         headers: {
-          authorization: token,
+          authorization: localStorage?.getItem("token"),
         },
       });
 
       const result = await response.json();
-
       toast("Removed from wishlist");
-
-      setWishList(result.wishlist);
+      setWishList(result?.wishlist);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -62,6 +74,8 @@ export const WishListProvider = ({ children }) => {
         showWishList,
         btnClickWishList,
         removeFromWishlist,
+        setWishList,
+        wishlistToShow,
       }}
     >
       {children}

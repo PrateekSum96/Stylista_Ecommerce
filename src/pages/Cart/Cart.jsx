@@ -10,7 +10,7 @@ export const Cart = () => {
   const { showWishList, btnClickWishList } = useContext(WishListContext);
 
   const totalPrice = cart?.reduce((acc, curr) => acc + Number(curr.price), 0);
-  console.log("cart", cart);
+
   return (
     <div>
       <div>
@@ -26,7 +26,7 @@ export const Cart = () => {
           {cart?.map(
             (cartItem) => (
               //
-              <div className="cart-card">
+              <div className="cart-card" key={cartItem.id}>
                 <img src={cartItem.image_url} alt={cartItem.title} />
                 <div className="cart-info">
                   <div className="cart-title">{cartItem.title}</div>
@@ -63,7 +63,7 @@ export const Cart = () => {
           )}
         </div>
         <div className="cart-checklist-info">
-          <div>Your Cart: {cart.length} items</div>
+          <div>Your Cart: {cart?.length} items</div>
           <hr />
           <div>Sub Total: &#8377;{totalPrice}</div>
           <div>Discount: &#8377;{Math.round(totalPrice * 0.1)}</div>

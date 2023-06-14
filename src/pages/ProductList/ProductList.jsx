@@ -22,7 +22,7 @@ export const ProductList = () => {
       </div>
       <div className="product">
         {showItem?.map((item) => (
-          <div className="product-card">
+          <div className="product-card" key={item.id}>
             <NavLink to={`/productDetail/${item.id}`}>
               <img src={item.image_url} alt={item.title} />
             </NavLink>

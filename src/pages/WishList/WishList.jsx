@@ -8,12 +8,12 @@ export const WishList = () => {
   return (
     <div>
       <div>
-        {showWishList.length === 0 ? (
+        {showWishList?.length === 0 ? (
           <h1 id="wishlist-empty-msg">Your wishlist is empty!! </h1>
         ) : (
           <div className="wishlist-container">
             {showWishList?.map((item) => (
-              <div>
+              <div key={item.id}>
                 <WishListCard {...item} />
               </div>
             ))}

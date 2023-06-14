@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const WishListCard = (item) => {
   const { btnClick, cart } = useContext(CartListContext);
   const { removeFromWishlist } = useContext(WishListContext);
-  console.log(item);
+
   return (
     <>
       <div className="wishList-card">

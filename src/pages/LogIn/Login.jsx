@@ -4,30 +4,34 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CartListContext } from "../../contexts/CartContext/CartListContext";
+import { WishListContext } from "../../contexts/CartContext/WishListContext";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
+  const { cartToShow } = useContext(CartListContext);
+  const { wishlistToShow } = useContext(WishListContext);
 
   const { setIsLoggedIn, personInfo, setPersonInfo } = useContext(AuthContext);
-
   const { email, password } = personInfo;
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  let cred;
 
   const showPassword = () => {
     setPasswordType(() => !passwordType);
   };
-  const location = useLocation();
-  const navigate = useNavigate();
-  let cred;
 
   const userLogin = () => {
     cred = { email, password };
     handleLogin();
   };
+
   const guestLogin = () => {
     cred = { email: "johnJacob@stylista.com", password: "johnJocob" };
     setPersonInfo((info) => ({ ...info, email: cred.email }));
     setPersonInfo((info) => ({ ...info, password: cred.password }));
-    handleLogin();
   };
 
   const handleLogin = async () => {
@@ -42,20 +46,17 @@ export const LogIn = () => {
         toast.error(data.errors[0]);
       } else {
         setIsLoggedIn(true);
-        navigate(location?.state?.from?.pathname);
-
-        toast.success("Login successful!!");
         localStorage.setItem("token", data.encodedToken);
+
+        cartToShow();
+        wishlistToShow();
+        navigate(location?.state?.from?.pathname);
+        toast.success("Login successful!!");
       }
     } catch (e) {
       console.error(e);
     }
   };
-
-  if (localStorage.getItem("token")) {
-    setIsLoggedIn(true);
-    navigate("/");
-  }
 
   return (
     <div>

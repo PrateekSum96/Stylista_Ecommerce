@@ -6,9 +6,23 @@ import { AuthContext } from "../Auth/AuthContext";
 export const CartListContext = createContext();
 
 export const CartListProvider = ({ children }) => {
-  const token = localStorage?.getItem("token");
   const { isLoggedIn } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
+
+  const cartToShow = async () => {
+    try {
+      const response = await fetch("/api/user/cart", {
+        headers: {
+          authorization: localStorage?.getItem("token"),
+        },
+      });
+      const result = await response.json();
+      setCart(result?.cart);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   const addToCart = async (item) => {
     try {
       const response = await fetch("/api/user/cart", {
@@ -21,30 +35,29 @@ export const CartListProvider = ({ children }) => {
 
       const result = await response.json();
       toast("Added to cart");
-      console.log(result);
-      setCart(result.cart);
+      setCart(result?.cart);
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
   const removeFromCart = async (cartItem) => {
-    console.log(cartItem);
     try {
       const response = await fetch(`/api/user/cart/${cartItem._id}`, {
         method: "DELETE",
         headers: {
-          authorization: token,
+          authorization: localStorage?.getItem("token"),
         },
       });
 
       const result = await response.json();
-      console.log(result);
       toast("Removed from cart");
-      setCart(result.cart);
+      setCart(result?.cart);
     } catch (error) {
       console.error("Error:", error);
     }
   };
+
   const btnClick = (item) => {
     if (!isLoggedIn) {
       toast("Please login to continue!");
@@ -55,10 +68,9 @@ export const CartListProvider = ({ children }) => {
     }
   };
 
-  //   console.log(cart);
   return (
     <CartListContext.Provider
-      value={{ addToCart, cart, removeFromCart, btnClick }}
+      value={{ addToCart, cart, removeFromCart, btnClick, setCart, cartToShow }}
     >
       {children}
     </CartListContext.Provider>
