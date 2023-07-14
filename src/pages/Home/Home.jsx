@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Home.css";
 import { NavLink } from "react-router-dom";
-import { CardCategory } from "../../components/CardCategory";
+import { CardCategory } from "../../components/Category/CardCategory";
 export const Home = () => {
   const [showData, setData] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -30,16 +30,23 @@ export const Home = () => {
       ) : (
         <div>
           <div className="header-image">
-            <img src="./image/header01.jpg" alt="header_image" />
-            <NavLink to="/productList">Shop Now</NavLink>
+            <img
+              id="header-img"
+              src="https://res.cloudinary.com/dosmdkl9i/image/upload/v1689311297/Stylista/header01_b8p9k0.jpg"
+              alt="header_image"
+            />
           </div>
-
-          <div className="category">
-            {showData.map((category) => (
-              <div className="card">
-                <CardCategory category={category} />
-              </div>
-            ))}
+          <NavLink to="/productList" id="link-product-page">
+            <button id="btn-product-page"> Shop Now</button>
+          </NavLink>
+          <div className="category-card">
+            <div className="category">
+              {showData.map((category) => (
+                <div className="card">
+                  <CardCategory category={category} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
