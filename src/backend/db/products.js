@@ -140,7 +140,7 @@ export const products = [
       "Medium shade, heavy fade blue jeans,Slim fit, mid-ris, Clean look,Stretchable,5 pocket, regular length",
     original_price: "1899",
     price: "854",
-    rating: "3.8",
+    rating: "2.8",
     size: "L",
     image_url:
       "https://assets.myntassets.com/dpr_2,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2019/12/3/ab3bf447-d21e-4533-a48d-c37a13f6553f1575396315934-1.jpg",
@@ -177,7 +177,7 @@ export const products = [
       "Blue self design checked windcheater quilted jacket with faux leather trim, has a mandarin collar, 2 pockets ,has a snap button closure, sleeveless, straight hemline, cotton lining",
     original_price: "8999",
     price: "4999",
-    rating: "5",
+    rating: "2.5",
     size: "M",
     image_url:
       "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/19478534/2022/8/12/d12929e3-1e33-49a2-9b9b-e244bb4df82a1660301831530Jackets1.jpg",
@@ -208,7 +208,7 @@ export const products = [
   {
     _id: uuid(),
     title: "Dolce Crudo",
-    description: "Grey solid jacke",
+    description: "Grey solid jacket",
     details:
       "Grey solid jacket, has a hooded, 2 pockets, snap button closure, long sleeves, straight hem, and unlined lining",
     original_price: "2899",
@@ -231,7 +231,7 @@ export const products = [
       "Black T-shirt for boys, Solid, Regular length,Polo collar,Short, regular sleeves, Knitted cotton fabric, Button closure",
     original_price: "1399",
     price: "499",
-    rating: "3.5",
+    rating: "4.5",
     size: "XL",
     image_url:
       "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/21389230/2023/5/18/2bf5874e-831f-4949-ad47-a2615b37a2e11684399769582HERENOWBoysPureCottonPoloCollarT-shirt1.jpg",
@@ -249,7 +249,7 @@ export const products = [
       "Yellow T-shirt for boys, Other printed, Regular length, Round neck, Short, regular sleeves, Knitted cotton fabric",
     original_price: "1879",
     price: "700",
-    rating: "4.3",
+    rating: "5",
     size: "S",
     image_url:
       "https://assets.myntassets.com/f_webp,dpr_1.0,q_60,w_210,c_limit,fl_progressive/assets/images/18476816/2022/5/27/17fcdc52-4399-4623-a413-77a4a97a0d8a1653667316252Tshirts1.jpg",
@@ -285,7 +285,7 @@ export const products = [
       "Pink solid opaque casual shirt, has a button-down collar, button placket, 1 patch pocket, long regular sleeves, curved hem",
     original_price: "2399",
     price: "1199",
-    rating: "4.5",
+    rating: "2.1",
     size: "M",
     image_url:
       "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/20566814/2022/12/5/a8e88fe0-f346-4a31-bc61-59749566365e1670232752060-US-Polo-Assn-Men-Pink-Solid-Pure-Cotton-Casual-Shirt-4501670-1.jpg",

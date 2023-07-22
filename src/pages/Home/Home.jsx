@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Home.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CardCategory } from "../../components/Category/CardCategory";
+import { FilterReducerContext } from "../../contexts/ReducerContext/ReducerContext";
+
 export const Home = () => {
   const [showData, setData] = useState([]);
   const [loader, setLoader] = useState(true);
+  const { filterDispatch } = useContext(FilterReducerContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await fetch("/api/categories");
         const jsonData = await response.json();
-        console.log(jsonData.categories);
         setData(jsonData.categories);
         setLoader(false);
       } catch (e) {
@@ -37,12 +40,30 @@ export const Home = () => {
             />
           </div>
           <NavLink to="/productList" id="link-product-page">
-            <button id="btn-product-page"> Shop Now</button>
+            <button
+              id="btn-product-page"
+              onClick={() => {
+                filterDispatch({
+                  type: "CLEAR_FILTER",
+                });
+              }}
+            >
+              Shop Now
+            </button>
           </NavLink>
           <div className="category-card">
             <div className="category">
               {showData.map((category) => (
-                <div className="card">
+                <div
+                  className="card"
+                  onClick={() => {
+                    filterDispatch({
+                      type: "FILTER_BY_CATEGORY",
+                      payload: category.categoryName,
+                    });
+                    navigate("/productList");
+                  }}
+                >
                   <CardCategory category={category} />
                 </div>
               ))}

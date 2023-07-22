@@ -1,43 +1,51 @@
 .sideBarIconToggle {
-  background-color: rgb(62, 112, 220);
+  background-color: #f0f1f2;
   width: 1.8rem;
   height: 1.8rem;
   position: absolute;
-  left: 0rem;
-  top: 3.8rem;
+  left: 0.2rem;
+  top: 6.7rem;
   cursor: pointer;
 }
 #openSideBar {
   position: absolute;
-  left: 0rem;
-  top: 3.95rem;
+  left: 0.2rem;
+  top: 6.5rem;
 }
-
+.filter-title {
+  font-size: 1.2rem;
+  position: absolute;
+  top: 2px;
+  left: 30px;
+}
+#openSideBar:checked ~ .sideBarIconToggle > .filter-title {
+  display: none;
+}
 .filters {
   color: white;
   background-color: black;
-
   opacity: 0.9;
   padding: 1rem;
   width: 200px;
   margin-top: 0rem;
   position: fixed;
+  top: 8.5rem;
   z-index: 10;
   transform: translateX(-240px);
-  transition: transform 250ms ease-in-out;
+  transition: transform 250ms linear;
+}
+.filter-clear {
+  display: flex;
+  justify-content: space-between;
 }
 
 #openSideBar:checked ~ .filters {
   transform: translateX(0px);
 }
 
-.filter-clear {
-  display: flex;
-  justify-content: space-between;
-}
 .spinner {
   height: 3px;
-  background-color: white;
+  background-color: black;
   transition: all 0.3s;
   margin-top: 5px;
 }
@@ -54,7 +62,23 @@
 }
 #openSideBar:checked ~ .sideBarIconToggle > .spinner.bottom {
   transform: rotate(-135deg);
-  margin-top: -9px;
+  margin-top: -8px;
+}
+#clear-btn {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid black;
+  transition: all 0.2s linear;
+}
+#clear-btn:hover {
+  cursor: pointer;
+  border: 1px solid white;
+}
+.filter-name {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 @media screen and (min-width: 768px) {
   .sideBarIconToggle,
@@ -70,5 +94,15 @@
     font-size: 1.2rem;
     margin-top: 0rem;
     transform: translateX(0px);
+  }
+
+  #clear-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid white;
+  }
+  #clear-btn:hover {
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
   }
 }
