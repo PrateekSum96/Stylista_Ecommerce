@@ -31,11 +31,6 @@ export const Navigation = () => {
             className="search"
             placeholder="Search products..."
             value={search}
-            onClick={() => {
-              filterDispatch({
-                type: "CLEAR_FILTER",
-              });
-            }}
             onChange={(e) => {
               filterDispatch({
                 type: "FILTER_BY_SEARCH",
