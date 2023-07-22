@@ -1,6 +1,28 @@
+import { useContext } from "react";
 import "./ProductFilter.css";
+import { FilterReducerContext } from "../../contexts/ReducerContext/ReducerContext";
 
 export const Filters = () => {
+  const {
+    filterState: { byPrice, byRating, sort, category },
+    filterDispatch,
+  } = useContext(FilterReducerContext);
+
+  const addToCategory = (e) => {
+    const { checked, value } = e.target;
+    if (checked) {
+      filterDispatch({
+        type: "FILTER_BY_CATEGORY",
+        payload: value,
+      });
+    } else {
+      const newCategory = category.filter((name) => name !== value);
+      filterDispatch({
+        type: "REMOVE_FROM_CATEGORY",
+        payload: newCategory,
+      });
+    }
+  };
   return (
     <div>
       <input type="checkbox" id="openSideBar" />
@@ -8,64 +30,132 @@ export const Filters = () => {
         <div className="spinner top"></div>
         <div className="spinner middle"></div>
         <div className="spinner bottom"></div>
+        <div className="filter-title">Filters</div>
       </label>
 
       <div className="filters">
         <div className="filter-clear">
           <span>Filter</span>
-          <span>clear</span>
+          <button
+            id="clear-btn"
+            onClick={() => {
+              filterDispatch({
+                type: "CLEAR_FILTER",
+              });
+            }}
+          >
+            Clear
+          </button>
         </div>
         <hr />
         <div>
-          <p>Price</p>
-          <input type="range" />
+          <div className="filter-name">Price</div>
+          <input
+            type="range"
+            min="500"
+            max="5000"
+            value={byPrice}
+            step={500}
+            onChange={(e) =>
+              filterDispatch({
+                type: "FILTER_BY_PRICE",
+                payload: e.target.value,
+              })
+            }
+          />
         </div>
         <hr />
+        {/* Categories */}
         <div>
-          <p>Categories</p>
+          <div className="filter-name">Categories</div>
           <div>
-            <input type="checkbox" id="men" />
-            <label htmlFor="men">Men</label>
+            <input
+              type="checkbox"
+              id="men"
+              value={"Men"}
+              checked={category.includes("Men")}
+              onChange={(e) => {
+                addToCategory(e);
+              }}
+            />
+            <label htmlFor="men"> Men </label>
           </div>
           <div>
-            <input type="checkbox" id="women" />
-            <label htmlFor="women">Women</label>
+            <input
+              type="checkbox"
+              id="women"
+              checked={category.includes("Women")}
+              value={"Women"}
+              onChange={(e) => {
+                addToCategory(e);
+              }}
+            />
+            <label htmlFor="women"> Women </label>
           </div>
           <div>
-            <input type="checkbox" id="kid" />
-            <label htmlFor="kid">Kid</label>
+            <input
+              type="checkbox"
+              id="kid"
+              value={"Kids"}
+              checked={category.includes("Kids")}
+              onChange={(e) => {
+                addToCategory(e);
+              }}
+            />
+            <label htmlFor="kid"> Kid </label>
           </div>
           <hr />
         </div>
         <div>
-          <p>Rating</p>
+          <div className="filter-name">Rating</div>
           <div>
-            <input type="radio" name="rating" id="star-4" />
-            <label htmlFor="star-4">4 stars & above</label>
-          </div>
-          <div>
-            <input type="radio" name="rating" id="star-3" />
-            <label htmlFor="star-3">3 stars & above</label>
-          </div>
-          <div>
-            <input type="radio" name="rating" id="star-2" />
-            <label htmlFor="star-2">2 stars & above</label>
-          </div>
-          <div>
-            <input type="radio" name="rating" id="star-1" />
-            <label htmlFor="star-1">1 stars & above</label>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              value={byRating}
+              step={1}
+              onChange={(e) =>
+                filterDispatch({
+                  type: "FILTER_BY_RATING",
+                  payload: e.target.value,
+                })
+              }
+            />
           </div>
           <hr />
           <div>
-            <p>Sort by price</p>
+            <div className="filter-name">Sort by price</div>
             <div>
               <div>
-                <input type="radio" name="sort" id="l2h" />
-                <label htmlFor="l2h">price - Low-to-High</label>
+                <input
+                  type="radio"
+                  name="sort"
+                  id="l2h"
+                  onChange={() =>
+                    filterDispatch({
+                      type: "FILTER_BY_SORT",
+                      payload: "l2h",
+                    })
+                  }
+                  checked={sort === "l2h"}
+                />
+                <label htmlFor="l2h"> Low-to-High </label>
               </div>
               <div>
-                <input type="radio" name="sort" id="h2l" />
-                <label htmlFor="h2l">price - High-to-Low</label>
+                <input
+                  type="radio"
+                  name="sort"
+                  id="h2l"
+                  onChange={() =>
+                    filterDispatch({
+                      type: "FILTER_BY_SORT",
+                      payload: "h2l",
+                    })
+                  }
+                  checked={sort === "h2l"}
+                />
+                <label htmlFor="h2l"> High-to-Low </label>
               </div>
             </div>
           </div>
