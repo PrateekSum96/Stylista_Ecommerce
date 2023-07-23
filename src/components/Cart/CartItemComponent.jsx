@@ -31,8 +31,8 @@ const CartItemList = () => {
               <div className="cart-item-price">
                 <span id="new-price"> &#8377;{cartItem.price}</span>
                 <span id="old-price">&#8377;{cartItem.original_price}</span>
-                <span id="discount">{discount(cartItem)}% OFF</span>
               </div>
+              <div id="discount"> {discount(cartItem)}% OFF</div>
               <div className="inc-dec-quantity">
                 <span className="quantity-tag">Quantity:</span>
                 <button

@@ -7,7 +7,7 @@
   margin-bottom: 1rem;
   display: flex;
   width: 360px;
-  height: 190px;
+  height: 200px;
   border-radius: 0.5rem;
   background-color: white;
   color: black;
@@ -19,8 +19,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .cart-item-image img {
-  width: 140px;
-  height: 190px;
+  width: 150px;
+  height: 200px;
   object-fit: cover;
   border-radius: 0.5rem;
 }
