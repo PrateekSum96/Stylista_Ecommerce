@@ -1,0 +1,123 @@
+.cart-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-item-card {
+  margin-bottom: 1rem;
+  display: flex;
+  width: 360px;
+  height: 190px;
+  border-radius: 0.5rem;
+  background-color: white;
+  color: black;
+  border: 3px solid rgb(215, 214, 214);
+  transition: all 0.3s linear;
+}
+.cart-item-card:hover {
+  border: 3px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cart-item-image img {
+  width: 140px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.cart-item-detail {
+  padding: 0.5rem 1rem;
+}
+.cart-item-detail div {
+  padding-bottom: 0.1rem;
+}
+.cart-item-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.cart-item-description {
+  font-size: 1.2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 40px;
+}
+
+.cart-item-price {
+  font-size: 1.1rem;
+}
+.cart-item-price span {
+  padding-right: 0.5rem;
+}
+
+#old-price {
+  text-decoration: line-through;
+  color: rgb(138, 138, 138);
+}
+#discount {
+  font-size: 1.1rem;
+  color: var(--focus-color);
+  font-weight: bold;
+}
+.cart-item-btn {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-end;
+}
+.cart-item-btn button {
+  padding: 0.3rem 0.4rem;
+  margin-right: 0.5rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 0.3rem;
+  transition: all 0.2s linear;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.cart-item-btn button:hover {
+  cursor: pointer;
+  background-color: var(--focus-color);
+  color: white;
+}
+.quantity-tag {
+  font-size: 1.2rem;
+}
+.inc-dec-btn {
+  width: 1.5rem;
+
+  font-size: 1.2rem;
+  border: none;
+  margin: 0 0.3rem;
+  transition: all 0.2s linear;
+  background-color: rgb(180, 179, 179);
+  color: black;
+  border-radius: 0.3rem;
+  transition: all 0.2s linear;
+}
+.inc-dec-btn:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .cart-item-card {
+    width: 420px;
+    height: 200px;
+  }
+  .cart-item-image img {
+    width: 150px;
+    height: 200px;
+  }
+  .cart-item-detail div {
+    padding-bottom: 0.5rem;
+  }
+  .cart-item-btn {
+    display: flex;
+    flex-direction: row;
+  }
+  #discount {
+    font-size: 1.3rem;
+    color: var(--focus-color);
+    font-weight: bold;
+  }
+}

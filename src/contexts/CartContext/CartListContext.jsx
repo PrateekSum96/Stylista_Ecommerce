@@ -67,10 +67,46 @@ export const CartListProvider = ({ children }) => {
         : addToCart(item);
     }
   };
+  const incrementProduct = async (cartItem) => {
+    try {
+      const response = await fetch(`/api/user/cart/${cartItem._id}`, {
+        method: "POST",
+        headers: { authorization: localStorage?.getItem("token") },
+        body: JSON.stringify({ action: { type: "increment" } }),
+      });
+      const result = await response.json();
 
+      setCart(result.cart);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const decrementProduct = async (cartItem) => {
+    try {
+      const response = await fetch(`/api/user/cart/${cartItem._id}`, {
+        method: "POST",
+        headers: { authorization: localStorage?.getItem("token") },
+        body: JSON.stringify({ action: { type: "decrement" } }),
+      });
+      const result = await response.json();
+
+      setCart(result.cart);
+    } catch (e) {
+      console.error(e);
+    }
+  };
   return (
     <CartListContext.Provider
-      value={{ addToCart, cart, removeFromCart, btnClick, setCart, cartToShow }}
+      value={{
+        addToCart,
+        cart,
+        removeFromCart,
+        btnClick,
+        setCart,
+        cartToShow,
+        incrementProduct,
+        decrementProduct,
+      }}
     >
       {children}
     </CartListContext.Provider>
