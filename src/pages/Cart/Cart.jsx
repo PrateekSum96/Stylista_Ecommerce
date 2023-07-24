@@ -25,12 +25,9 @@ export const Cart = () => {
           </div>
         ) : (
           <div className="cart-layout">
-            <div>
-              <CartPriceDetail />
-            </div>
-            <div>
-              <CartItemList />
-            </div>
+            <CartPriceDetail />
+
+            <CartItemList />
           </div>
         )}
       </div>
