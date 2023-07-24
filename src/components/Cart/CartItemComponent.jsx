@@ -15,6 +15,7 @@ const CartItemList = () => {
     );
     return percentageDiscount;
   };
+
   return (
     <div className="cart-item-container">
       {cart?.map((cartItem) => (
@@ -37,6 +38,7 @@ const CartItemList = () => {
                 <span className="quantity-tag">Quantity:</span>
                 <button
                   className="inc-dec-btn"
+                  disabled={cartItem?.qty < 1 ? true : false}
                   onClick={() => {
                     cartItem.qty <= 1
                       ? removeFromCart(cartItem)
