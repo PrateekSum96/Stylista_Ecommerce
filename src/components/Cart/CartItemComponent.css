@@ -34,6 +34,10 @@
 .cart-item-title {
   font-size: 1.3rem;
   font-weight: bold;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
 .cart-item-description {
   font-size: 1.2rem;
