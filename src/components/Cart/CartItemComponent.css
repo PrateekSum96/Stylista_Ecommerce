@@ -7,7 +7,7 @@
   margin-bottom: 1rem;
   display: flex;
   width: 360px;
-  height: 200px;
+  height: 205px;
   border-radius: 0.5rem;
   background-color: white;
   color: black;
@@ -20,7 +20,7 @@
 }
 .cart-item-image img {
   width: 150px;
-  height: 200px;
+  height: 205px;
   object-fit: cover;
   border-radius: 0.5rem;
 }
@@ -69,6 +69,7 @@
 .cart-item-btn {
   display: flex;
   flex-direction: row;
+  margin-top: 0.2rem;
 }
 .cart-item-btn button {
   padding: 0.3rem 0.4rem;
@@ -107,14 +108,15 @@
 @media screen and (min-width: 768px) {
   .cart-item-card {
     width: 420px;
-    height: 200px;
+    height: 220px;
   }
   .cart-item-image img {
     width: 150px;
-    height: 200px;
+    height: 220px;
   }
+
   .cart-item-detail div {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
   }
 
   #discount {
