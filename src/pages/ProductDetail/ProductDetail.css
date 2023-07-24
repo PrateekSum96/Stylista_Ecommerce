@@ -1,98 +1,116 @@
-.productDetailCard {
+.product-detail-card {
   margin: auto;
   margin-top: 3rem;
-  border: 3px solid white;
-  border-radius: 1rem;
-  background-color: rgb(62, 112, 220);
-  color: white;
-  width: 16.4rem;
-  padding: 0.3rem;
-  height: auto;
+  border-radius: 0.3rem;
+  background-color: white;
+  color: black;
+  width: 280px;
+  font-size: 1.2rem;
+  padding: 0.5rem 0.8rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.product-detail-card div {
+  margin-bottom: 0.2rem;
+}
 
-.productDetailCard img {
-  width: 220px;
-  height: 300px;
-  object-fit: contain;
-  margin: 1rem 1.3rem 0rem 1.3rem;
-  border-radius: 1rem;
+.product-detail-img img {
+  width: 280px;
+  /* height: 350px; */
+  object-fit: cover;
+  border-radius: 0.3rem;
 }
 
 .title-detail {
   font-size: 1.5rem;
-  padding: 1.5rem;
-  margin-top: -1rem;
   font-weight: 700;
+  color: var(--focus-color);
 }
-.reviews {
-  font-size: 1.2rem;
-  padding-left: 1.5rem;
-  margin-top: -1rem;
-}
+
 .price-detail {
-  padding-top: 0.5rem;
   display: flex;
-  justify-content: space-between;
 }
-.price {
-  padding-left: 1.1rem;
+.price-detail div {
+  margin-right: 0.5rem;
 }
-.price span {
-  padding: 0.5rem;
-}
-#idToCross {
+
+#price-to-cross {
   text-decoration: line-through;
-  color: rgb(31, 29, 29);
-}
-.pricePercentage {
-  padding-right: 4rem;
-  font-size: 1.1rem;
+  color: gray;
 }
 
-.extra-info {
-  padding: 0rem 1rem;
-  line-height: 1.2;
-  font-size: 1.1rem;
+#price-percentage {
+  font-size: 1.4rem;
+  color: var(--focus-color);
+  font-weight: bold;
 }
-
-.extra-info div {
-  padding: 0.2rem 0rem;
+.span-bold {
+  font-weight: bold;
 }
 
 .btn-detail {
-  padding: 0.5rem;
   display: flex;
   justify-content: space-around;
 }
 
 .btn-detail button {
   padding: 0.5rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   border: none;
   border: 2px solid white;
-  background-color: rgb(62, 112, 220);
+  background-color: var(--primary-color);
   color: white;
   cursor: pointer;
+  transition: all 0.2s linear;
 }
 
 .btn-detail button:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border: 2px solid black;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: var(--focus-color);
 }
-
+.out-of-stock {
+  text-align: center;
+  font-size: 1.7rem;
+  color: red;
+  font-weight: 600;
+}
 @media screen and (min-width: 768px) {
-  .productDetailCard {
+  .product-detail-card {
     margin: auto;
-    margin-top: 4rem;
+    margin-top: 10rem;
     display: flex;
-    width: 40rem;
-    height: auto;
-
-    padding-bottom: 1rem;
+    width: 700px;
+    /* height: 350px; */
+    padding: 1rem;
+    font-size: 1.4rem;
   }
-
-  .productDetailCard img {
-    margin-top: 0.8rem;
+  .product-detail-info {
+    padding-left: 1rem;
+  }
+  .title-detail {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--focus-color);
+  }
+  .out-of-stock {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+  }
+  .btn-detail {
+    display: flex;
+    flex-direction: column;
+  }
+  .btn-detail button {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.3rem;
+    border: none;
+    border: 2px solid white;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s linear;
+  }
+  #price-percentage {
+    font-size: 1.6rem;
   }
 }
