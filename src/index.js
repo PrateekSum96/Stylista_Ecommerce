@@ -19,6 +19,10 @@ import {
   CartListContext,
   CartListProvider,
 } from "./contexts/CartContext/CartListContext";
+import {
+  AddressProvider,
+  AddressContext,
+} from "./contexts/AddressContext/AddressContext";
 // Call make Server
 makeServer();
 
@@ -28,6 +32,7 @@ export {
   CartListContext,
   WishListContext,
   FilterReducerContext,
+  AddressContext,
 };
 
 ReactDOM.render(
@@ -38,7 +43,9 @@ ReactDOM.render(
           <WishListProvider>
             <CartProvider>
               <FilterReducerProvider>
-                <App />
+                <AddressProvider>
+                  <App />
+                </AddressProvider>
               </FilterReducerProvider>
             </CartProvider>
           </WishListProvider>

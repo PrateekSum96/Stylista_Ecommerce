@@ -1,8 +1,9 @@
 import "./CartPriceDetail.css";
 import { useContext } from "react";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
+import { NavLink } from "react-router-dom";
 
-const CartPriceDetail = () => {
+const CartPriceDetail = ({ checkOut }) => {
   const { cart } = useContext(CartListContext);
 
   const totalPrice = cart?.reduce(
@@ -37,7 +38,15 @@ const CartPriceDetail = () => {
         </div>
       </div>
       <div className="btn-place-order">
-        <button>Place Order</button>
+        {!checkOut ? (
+          <NavLink to="/checkout">
+            <button>Check Out</button>
+          </NavLink>
+        ) : (
+          <NavLink to="/ordersummery">
+            <button>Place Order</button>
+          </NavLink>
+        )}
       </div>
     </div>
   );

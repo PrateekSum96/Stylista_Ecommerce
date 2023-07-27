@@ -1,0 +1,80 @@
+.overlay {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#cross {
+  position: absolute;
+  font-size: 1.2rem;
+  left: 275px;
+  top: 5px;
+  color: white;
+}
+#cross:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.address-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid white;
+  margin: 10px;
+  width: 300px;
+  padding: 10px 0 20px 0;
+  border-radius: 0.3rem;
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#address-header {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  margin: 5px 0;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+.form-container input {
+  width: 200px;
+  height: 25px;
+  font-size: 20px;
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  border-radius: 0.3rem;
+}
+.address-info input:focus {
+  outline: 3px solid black;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-address {
+  padding: 0.5rem 1rem;
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  background-color: white;
+  border-radius: 0.3rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  outline: none;
+  transition: all 0.2s linear;
+}
+.dd-address:hover {
+  cursor: pointer;
+  background-color: gray;
+  color: white;
+}
+
+#dummy-add-btn {
+  width: 220px;
+}

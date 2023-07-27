@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [userDetail, setUserDetail] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [personInfo, setPersonInfo] = useState({
     firstName: "",
@@ -13,6 +14,7 @@ export const AuthProvider = ({ children }) => {
     icon: false,
     confirmIcon: false,
   });
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setIsLoggedIn(true);
@@ -25,6 +27,8 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn,
         personInfo,
         setPersonInfo,
+        userDetail,
+        setUserDetail,
       }}
     >
       {children}
