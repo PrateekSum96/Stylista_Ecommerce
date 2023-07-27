@@ -9,7 +9,7 @@ import { useNavigate } from "react-router";
 export const SignUp = () => {
   const navigate = useNavigate();
 
-  const { setIsLoggedIn, personInfo } = useContext(AuthContext);
+  const { setIsLoggedIn, personInfo, setUserDetail } = useContext(AuthContext);
 
   const { firstName, lastName, email, password, confirmPassword } = personInfo;
 
@@ -26,6 +26,7 @@ export const SignUp = () => {
         toast.error(result.errors[0]);
       } else {
         setIsLoggedIn(true);
+        setUserDetail(result.createdUser);
 
         localStorage.setItem("token", result.encodedToken);
         toast.success("Login successful!!");

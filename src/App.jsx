@@ -6,13 +6,14 @@ import { Navigation } from "./components/Navigation/Navigation";
 import { Cart } from "./pages/Cart/Cart";
 import { WishList } from "./pages/WishList/WishList";
 import { Account } from "./pages/Account/Account";
-import { ProductDetail } from "./pages/ProductDetail/ProductDetail";
 import { LogIn } from "./pages/LogIn/Login";
 import { SignUp } from "./pages/SignUp/SignUp";
 import Mockman from "mockman-js";
 import { RequireAuth } from "./components/RequireAuth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CheckOut } from "./pages/CheckOut/CheckOut";
+import { OrderSummery } from "./pages/Order Summery/OrderSummery";
 
 function App() {
   return (
@@ -46,7 +47,23 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path="/productDetail/:productId" element={<ProductDetail />} />
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <CheckOut />
+            </RequireAuth>
+          }
+        />
+        <Route path="/ordersummery" element={<OrderSummery />} />
+        <Route
+          path="/productDetail/:productId"
+          element={
+            <RequireAuth>
+              <OrderSummery />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />

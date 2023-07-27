@@ -8,7 +8,6 @@ import { CartPriceDetail } from "../../components/Cart/CartPriceDetail";
 
 export const Cart = () => {
   const { cart } = useContext(CartListContext);
-
   return (
     <div>
       <div className="cart-page">

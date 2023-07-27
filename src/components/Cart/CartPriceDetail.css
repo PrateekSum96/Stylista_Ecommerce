@@ -27,6 +27,9 @@
 .btn-place-order {
   margin: 0.3rem 0;
 }
+.btn-place-order a {
+  text-decoration: none;
+}
 .btn-place-order button {
   margin: auto;
   display: block;

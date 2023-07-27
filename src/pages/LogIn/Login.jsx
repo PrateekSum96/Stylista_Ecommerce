@@ -12,7 +12,8 @@ export const LogIn = () => {
   const { cartToShow } = useContext(CartListContext);
   const { wishlistToShow } = useContext(WishListContext);
 
-  const { setIsLoggedIn, personInfo, setPersonInfo } = useContext(AuthContext);
+  const { setIsLoggedIn, personInfo, setPersonInfo, setUserDetail } =
+    useContext(AuthContext);
   const { email, password } = personInfo;
   const location = useLocation();
   const navigate = useNavigate();
@@ -46,8 +47,9 @@ export const LogIn = () => {
         toast.error(data.errors[0]);
       } else {
         setIsLoggedIn(true);
-        localStorage.setItem("token", data.encodedToken);
+        setUserDetail(data.foundUser);
 
+        localStorage.setItem("token", data.encodedToken);
         cartToShow();
         wishlistToShow();
         navigate(location?.state?.from?.pathname);
