@@ -5,6 +5,7 @@
   margin-top: 20px;
 }
 .checkout-card {
+  align-self: flex-start;
   width: 360px;
 }
 
