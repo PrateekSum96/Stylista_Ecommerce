@@ -18,7 +18,9 @@ import { OrderSummery } from "./pages/Order Summery/OrderSummery";
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      <div className="nav-container">
+        <Navigation />
+      </div>
 
       <Routes>
         <Route path="/" element={<Home />} />

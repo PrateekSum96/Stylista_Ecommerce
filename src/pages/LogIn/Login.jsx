@@ -6,11 +6,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import { WishListContext } from "../../contexts/CartContext/WishListContext";
+import { AddressContext } from "../../contexts/AddressContext/AddressContext";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
   const { cartToShow } = useContext(CartListContext);
   const { wishlistToShow } = useContext(WishListContext);
+  const { getAddress } = useContext(AddressContext);
 
   const { setIsLoggedIn, personInfo, setPersonInfo, setUserDetail } =
     useContext(AuthContext);
@@ -52,6 +54,7 @@ export const LogIn = () => {
         localStorage.setItem("token", data.encodedToken);
         cartToShow();
         wishlistToShow();
+        getAddress();
         navigate(location?.state?.from?.pathname);
         toast.success("Login successful!!");
       }

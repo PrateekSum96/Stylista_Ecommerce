@@ -15,8 +15,7 @@ export const Account = () => {
     useContext(AuthContext);
   const { setCart } = useContext(CartListContext);
   const { setWishList } = useContext(WishListContext);
-
-  const { hideAddAddress } = useContext(AddressContext);
+  const { hideAddAddress, setShowAddress } = useContext(AddressContext);
   const handleLogout = () => {
     localStorage.removeItem("token");
 
@@ -31,6 +30,7 @@ export const Account = () => {
     });
     setCart(() => []);
     setWishList(() => []);
+    setShowAddress(() => []);
     toast.success("Logout successful");
   };
   return (
