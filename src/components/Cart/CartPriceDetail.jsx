@@ -6,7 +6,7 @@ import { AddressContext } from "../../contexts/AddressContext/AddressContext";
 
 const CartPriceDetail = ({ checkOut }) => {
   const { cart } = useContext(CartListContext);
-  const { orderAddress, hideAddAddress } = useContext(AddressContext);
+  const { orderAddress } = useContext(AddressContext);
   console.log(orderAddress);
 
   const totalPrice = cart?.reduce(
