@@ -3,7 +3,12 @@
 html {
   font-size: 100%;
 }
-
+.navigation {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
 .navigation .brand-name {
   font-family: "Lobster", cursive;
   font-size: 2rem;

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,22 +19,22 @@ const AddressProvider = ({ children }) => {
     phone: "",
   });
 
-  // const getAddress = async () => {
-  //   try {
-  //     const response = await fetch("/api/user/address", {
-  //       headers: {
-  //         authorization: localStorage?.getItem("token"),
-  //       },
-  //     });
-  //     const result = await response.json();
-  //     console.log(result);
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getAddress();
-  // }, []);
+  const getAddress = async () => {
+    try {
+      const response = await fetch("/api/user/address", {
+        headers: {
+          authorization: localStorage?.getItem("token"),
+        },
+      });
+      const result = await response.json();
+      setShowAddress(result.address);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  useEffect(() => {
+    getAddress();
+  }, []);
 
   const addAddress = async () => {
     try {
@@ -103,6 +103,7 @@ const AddressProvider = ({ children }) => {
     pincode: "400001",
     phone: "1234567890",
   };
+  const [orderAddress, setOrderAddress] = useState(dummyAddress);
 
   return (
     <AddressContext.Provider
@@ -119,6 +120,10 @@ const AddressProvider = ({ children }) => {
         dummyAddress,
         showEditBtn,
         setEditBtn,
+        setShowAddress,
+        getAddress,
+        orderAddress,
+        setOrderAddress,
       }}
     >
       {children}

@@ -1,10 +1,11 @@
 .cart-price-container {
   width: 350px;
-  height: 190px;
+  max-height: 510px;
   padding: 0.5rem;
   background-color: white;
   border-radius: 0.3rem;
   margin-bottom: 1rem;
+  align-self: flex-start;
 }
 #price-detail-header {
   text-align: center;
@@ -20,9 +21,9 @@
   border-bottom: 1px solid rgb(174, 174, 174);
 }
 .price-item-detail div {
-  padding: 0rem 3rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 .btn-place-order {
   margin: 0.3rem 0;
@@ -41,14 +42,43 @@
   border-radius: 0.3rem;
   transition: all 0.2s linear;
 }
+.order-address {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  border-bottom: 1px solid gray;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#order-add-header {
+  text-align: center;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top: 0.2rem;
+}
+
+table {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+.table-header {
+  font-size: 1.3rem;
+}
+.table-data {
+  font-size: 1.3rem;
+}
 
 .btn-place-order button:hover {
   cursor: pointer;
   background-color: var(--focus-color);
 }
-
 @media screen and (min-width: 768px) {
   .cart-price-container {
     margin-left: 1rem;
+    position: sticky;
+    top: 70px;
   }
 }

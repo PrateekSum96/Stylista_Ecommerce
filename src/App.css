@@ -3,3 +3,11 @@
   --focus-color: rgb(32, 91, 219);
   --card-color: rgb(255, 255, 255);
 }
+.nav-container {
+  height: 103px;
+}
+@media screen and (min-width: 768px) {
+  .nav-container {
+    height: 60px;
+  }
+}

@@ -21,12 +21,7 @@ const AddAddressComponent = () => {
   };
 
   return (
-    <div
-      className="overlay"
-      onClick={() => {
-        setHideAddAddress(!hideAddAddress);
-      }}
-    >
+    <div className="overlay">
       <div className="address-info" onClick={(e) => e.stopPropagation()}>
         <div id="address-header">
           Address{" "}
