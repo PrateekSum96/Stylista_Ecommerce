@@ -22,6 +22,10 @@
 #btn-to-productList:hover {
   cursor: pointer;
   border: 2px solid white;
+  background-color: var(--focus-color);
+}
+#btn-to-productList:focus {
+  background-color: black;
 }
 
 @media screen and (min-width: 768px) {
