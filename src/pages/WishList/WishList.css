@@ -1,52 +1,7 @@
-#wishlist-empty-msg {
+.wishlist-header {
   text-align: center;
-}
-
-.wishlist-container {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.wishList-card {
-  width: 240px;
-  height: 400px;
-  border: 1px solid black;
-  margin: 0.5rem;
-  padding: 0.3rem;
-  border-radius: 1rem;
-  background-color: #3e70dc;
-  color: white;
-}
-.wishList-card img {
-  width: 240px;
-  height: 250px;
-}
-#original-price {
-  text-decoration: line-through;
-}
-.wishlist-info {
-  padding: 0.5rem;
-}
-.wishlist-info div {
-  margin-bottom: 0.2rem;
-}
-
-.wishlist-btn {
-  margin: 0.2rem;
-}
-
-.wishlist-btn button {
-  margin: 0.2rem;
-  padding: 0.3rem;
-  border-radius: 0.2rem;
-  border: 1px solid white;
-  background-color: #3e70dc;
-  color: white;
-}
-.wishlist-btn button:hover {
-  cursor: pointer;
-
-  background-color: #0d2861;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--focus-color);
 }
