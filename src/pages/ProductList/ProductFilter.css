@@ -62,7 +62,7 @@
 }
 #openSideBar:checked ~ .sideBarIconToggle > .spinner.bottom {
   transform: rotate(-135deg);
-  margin-top: -8px;
+  margin-top: -10px;
 }
 #clear-btn {
   padding: 0.2rem 0.5rem;
@@ -80,6 +80,28 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+
+datalist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  writing-mode: vertical-lr;
+  width: 150px;
+}
+#price > option {
+  padding-left: 20px;
+}
+option {
+  margin-top: -10px;
+  padding-left: 11px;
+  transform: rotate(-90deg);
+}
+
+input[type="range"] {
+  width: 150px;
+  margin: 0;
+}
+
 @media screen and (min-width: 768px) {
   .sideBarIconToggle,
   #openSideBar {

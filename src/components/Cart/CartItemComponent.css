@@ -108,7 +108,9 @@
 .inc-dec-btn:hover {
   cursor: pointer;
 }
-
+#remove-to-cart-btn {
+  background-color: black;
+}
 @media screen and (min-width: 768px) {
   .cart-item-card {
     width: 420px;

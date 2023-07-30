@@ -1,0 +1,137 @@
+.product-card {
+  position: relative;
+  background-color: white;
+  margin: 1rem;
+  border-radius: 0.3rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 220px;
+  transition: all 0.3s linear;
+  border: 2px solid white;
+}
+.product-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.product-card img {
+  width: 220px;
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.trending {
+  position: absolute;
+  top: 0.5rem;
+  background-color: rgb(255, 128, 0);
+  color: white;
+  width: 30%;
+  padding: 0.2rem 0.6rem;
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.rating-review-size {
+  display: flex;
+
+  justify-content: space-around;
+  position: absolute;
+  top: 226px;
+}
+.size {
+  position: absolute;
+  left: 192px;
+  width: 15px;
+  text-align: center;
+}
+
+.rating-review-size span {
+  padding: 0rem 0.3rem;
+}
+.rating {
+  background-color: rgb(18, 111, 148);
+  padding: 0.2rem 0.2rem;
+  color: white;
+}
+.size {
+  background-color: rgb(246, 99, 21);
+  padding: 0.2rem 0.4rem;
+  color: white;
+}
+.product-list-info {
+  padding: 0 10px;
+}
+
+.product-list-title {
+  font-size: 1.4rem;
+  margin-top: 0.2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  height: 50px;
+}
+.product-list-title a {
+  text-decoration: none;
+  color: var(--focus-color);
+}
+.product-list-title a:hover {
+  cursor: pointer;
+}
+
+.product-list-price {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.product-list-price span {
+  margin-right: 0.8rem;
+}
+.original-price {
+  color: gray;
+  text-decoration: line-through;
+}
+.btn {
+  margin: 0.5rem 0.5rem 0.3rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn button {
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.2rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border: 1px solid white;
+  transition: all 0.2s linear;
+}
+
+.btn button:hover {
+  border: 1px solid var(--focus-color);
+  background-color: var(--focus-color);
+}
+#add-to-cart-btn {
+  background-color: black;
+}
+#out-of-stock {
+  color: red;
+  font-size: 1.7rem;
+  font-weight: bold;
+  padding: 1.5rem;
+  text-align: center;
+}
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+@media screen and (min-width: 768px) {
+  .trending {
+    padding: 0.2rem 0;
+  }
+}

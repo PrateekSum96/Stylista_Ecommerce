@@ -1,120 +1,9 @@
 .product {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 100%;
-}
-
-.product-card {
-  position: relative;
-  background-color: white;
-  margin: 2rem;
-  border-radius: 1rem;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 210px;
-}
-
-.product-card:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-.product-card img {
-  width: 210px;
-  height: 270px;
-  object-fit: cover;
-  border-radius: 1rem;
-  cursor: pointer;
-}
-.product-card .trending {
-  position: absolute;
-  bottom: 22.2rem;
-  background-color: rgb(255, 128, 0);
-  color: white;
-  width: 30%;
-  padding: 0.3rem 0rem;
-  border-top-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-  padding-left: 0.2rem;
-}
-.product-card .rating-review-size {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  bottom: 1.79rem;
-}
-
-.product-card .rating-review-size span {
-  padding: 0rem 0.3rem;
-}
-.product-card .rating-review-size .rating {
-  background-color: rgb(18, 111, 148);
-  padding: 0.2rem 0.2rem;
-  color: white;
-}
-.product-card .rating-review-size .size {
-  background-color: rgb(246, 99, 21);
-  padding: 0.2rem 0.4rem;
-  color: white;
-}
-.title {
-  margin-top: -1.5rem;
-  font-size: 1.2rem;
-  padding-left: 0.2rem;
-}
-
-.title a {
-  text-decoration: none;
-  color: black;
-}
-
-.title a:hover {
-  text-decoration: underline;
-}
-.product-card .price span {
-  padding: 0.1rem 0.2rem;
-}
-.product-card .price .original-price {
-  color: gray;
-  text-decoration: line-through;
-}
-
-.product-card .btn {
-  margin: 0.5rem 0.5rem;
-  display: flex;
-  justify-content: space-between;
-}
-.product-card button {
-  border-radius: 0.5rem;
-  padding: 0.3rem 0.4rem;
-  background-color: rgb(62, 112, 220);
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-.description {
-  padding: 0.2rem;
-}
-.btn button {
-  border: 1px solid white;
-}
-.btn button:hover {
-  border: 1px solid black;
-}
-#btn-out-of-stock {
-  background-color: red;
-  padding: 0.5rem;
-  text-align: center;
-  margin: auto;
-  display: block;
-}
-.nav-link {
-  text-decoration: none;
-  color: white;
-}
-#btn-out-of-stock:hover {
-  cursor: not-allowed;
+  margin-top: 2rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -123,5 +12,8 @@
   }
   .product {
     border-left: 2px solid white;
+    margin-top: 0.5rem;
+    justify-content: flex-start;
+    padding-left: 2rem;
   }
 }

@@ -28,14 +28,7 @@ const CardWishList = (item) => {
         </div>
       </div>
       <div className="wishlist-btn">
-        <button
-          onClick={() => btnClick(item)}
-          style={{
-            backgroundColor: findInCart(item)
-              ? "black"
-              : " var(--primary-color)",
-          }}
-        >
+        <button onClick={() => btnClick(item)} id="add-to-cart-btn">
           {findInCart(item) ? (
             <NavLink to="/cart" className="nav-link">
               Go to Cart
