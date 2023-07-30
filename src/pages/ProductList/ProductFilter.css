@@ -102,6 +102,11 @@ input[type="range"] {
   margin: 0;
 }
 
+#max-price {
+  position: relative;
+  left: 20px;
+}
+
 @media screen and (min-width: 768px) {
   .sideBarIconToggle,
   #openSideBar {
