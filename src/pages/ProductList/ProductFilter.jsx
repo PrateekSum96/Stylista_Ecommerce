@@ -66,9 +66,9 @@ export const Filters = () => {
           />
           <datalist id="price">
             <option value="500" label="500"></option>
-            <option value="1000" label=""></option>
+
             <option value="2500" label="2500"></option>
-            <option value="2000" label=""></option>
+
             <option value="5000" label="5000"></option>
           </datalist>
         </div>

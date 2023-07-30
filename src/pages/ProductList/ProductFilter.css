@@ -89,11 +89,11 @@ datalist {
   width: 150px;
 }
 #price > option {
-  padding-left: 20px;
+  padding-left: 18px;
 }
 option {
   margin-top: -10px;
-  padding-left: 11px;
+  padding-left: 10px;
   transform: rotate(-90deg);
 }
 
