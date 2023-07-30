@@ -9,6 +9,7 @@ export const Navigation = () => {
     filterState: { search },
     filterDispatch,
   } = useContext(FilterReducerContext);
+
   return (
     <div>
       <nav className="navigation">
@@ -42,7 +43,7 @@ export const Navigation = () => {
         </div>
         <div className="icons">
           <NavLink to="/productList">
-            <i class="fa-sharp fa-regular fa-compass fa-xl"></i>
+            <i class="fa-sharp fa-regular fa-compass fa-xl "></i>
           </NavLink>
           <NavLink to="/cart">
             <i class="fa-solid fa-cart-shopping fa-xl"></i>

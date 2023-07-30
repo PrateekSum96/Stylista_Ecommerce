@@ -56,7 +56,10 @@ const CartItemList = () => {
                 </button>
               </div>
               <div className="cart-item-btn">
-                <button onClick={() => removeFromCart(cartItem)}>
+                <button
+                  onClick={() => removeFromCart(cartItem)}
+                  id="remove-to-cart-btn"
+                >
                   Remove from Cart
                 </button>
                 <button

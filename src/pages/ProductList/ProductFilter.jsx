@@ -56,6 +56,7 @@ export const Filters = () => {
             max="5000"
             value={byPrice}
             step={500}
+            list="price"
             onChange={(e) =>
               filterDispatch({
                 type: "FILTER_BY_PRICE",
@@ -63,6 +64,13 @@ export const Filters = () => {
               })
             }
           />
+          <datalist id="price">
+            <option value="500" label="500"></option>
+            <option value="1000" label=""></option>
+            <option value="2500" label="2500"></option>
+            <option value="2000" label=""></option>
+            <option value="5000" label="5000"></option>
+          </datalist>
         </div>
         <hr />
         {/* Categories */}
@@ -113,6 +121,7 @@ export const Filters = () => {
               type="range"
               min="1"
               max="5"
+              list="rating"
               value={byRating}
               step={1}
               onChange={(e) =>
@@ -122,6 +131,13 @@ export const Filters = () => {
                 })
               }
             />
+            <datalist id="rating">
+              <option value="1" label="1"></option>
+              <option value="2" label="2"></option>
+              <option value="3" label="3"></option>
+              <option value="4" label="4"></option>
+              <option value="5" label="5"></option>
+            </datalist>
           </div>
           <hr />
           <div>
