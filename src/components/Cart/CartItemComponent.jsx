@@ -42,7 +42,6 @@ const CartItemList = () => {
                   style={{
                     cursor: cartItem?.qty <= 1 ? "not-allowed" : "pointer",
                   }}
-                  // disabled={cartItem?.qty <= 1 ? true : false}
                   onClick={() => {
                     decrementProduct(cartItem);
                   }}
