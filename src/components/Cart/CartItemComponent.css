@@ -74,6 +74,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 0.2rem;
+  height: 50px;
 }
 .cart-item-btn button {
   padding: 0.3rem 0.4rem;
