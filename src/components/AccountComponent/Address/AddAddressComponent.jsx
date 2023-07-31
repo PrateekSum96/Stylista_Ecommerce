@@ -24,7 +24,7 @@ const AddAddressComponent = () => {
     <div className="overlay">
       <div className="address-info" onClick={(e) => e.stopPropagation()}>
         <div id="address-header">
-          Address{" "}
+          Address
           <span
             id="cross"
             onClick={() => {

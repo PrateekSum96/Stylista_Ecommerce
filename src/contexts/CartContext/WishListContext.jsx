@@ -33,7 +33,7 @@ export const WishListProvider = ({ children }) => {
       });
 
       const result = await response.json();
-      toast("Added to Wishlist");
+      toast.success("Added to Wishlist");
       setWishList(result?.wishlist);
     } catch (error) {
       console.error("Error:", error);
@@ -60,7 +60,7 @@ export const WishListProvider = ({ children }) => {
       });
 
       const result = await response.json();
-      toast("Removed from wishlist");
+      toast.success("Removed from wishlist");
       setWishList(result?.wishlist);
     } catch (error) {
       console.error("Error:", error);

@@ -3,12 +3,13 @@ import "./CartItemComponent.css";
 import { useContext } from "react";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import { WishListContext } from "../../contexts/CartContext/WishListContext";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CartItemList = () => {
   const { cart, removeFromCart, incrementProduct, decrementProduct } =
     useContext(CartListContext);
   const { showWishList, btnClickWishList } = useContext(WishListContext);
+  const navigate = useNavigate();
   const discount = ({ price, original_price }) => {
     const percentageDiscount = Math.floor(
       ((original_price - price) / original_price) * 100
@@ -38,11 +39,12 @@ const CartItemList = () => {
                 <span className="quantity-tag">Quantity:</span>
                 <button
                   className="inc-dec-btn"
-                  disabled={cartItem?.qty < 1 ? true : false}
+                  style={{
+                    cursor: cartItem?.qty <= 1 ? "not-allowed" : "pointer",
+                  }}
+                  // disabled={cartItem?.qty <= 1 ? true : false}
                   onClick={() => {
-                    cartItem.qty <= 1
-                      ? removeFromCart(cartItem)
-                      : decrementProduct(cartItem);
+                    decrementProduct(cartItem);
                   }}
                 >
                   -
@@ -62,20 +64,22 @@ const CartItemList = () => {
                 >
                   Remove from Cart
                 </button>
-                <button
-                  onClick={() => btnClickWishList(cartItem)}
-                  id="wishlist-btn"
-                >
-                  {showWishList?.find(
-                    (wishListItem) => wishListItem.id === cartItem.id
-                  ) ? (
-                    <NavLink to="/wishList" className="nav-link">
-                      Go to Wishlist
-                    </NavLink>
-                  ) : (
-                    "Add to WishList"
-                  )}
-                </button>
+
+                {showWishList?.find(
+                  (wishListItem) => wishListItem.id === cartItem.id
+                ) ? (
+                  <button onClick={() => navigate("/wishList")}>
+                    Go to Wishlist
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      btnClickWishList(cartItem);
+                    }}
+                  >
+                    Add to WishList
+                  </button>
+                )}
               </div>
             </div>
           </div>

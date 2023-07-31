@@ -11,6 +11,8 @@ const ShowAddressComponent = () => {
     setAddress,
     setEditBtn,
     setOrderAddress,
+
+    setShowDeliveryAddress,
   } = useContext(AddressContext);
 
   const handleChange = (e) => {
@@ -46,7 +48,10 @@ const ShowAddressComponent = () => {
             id={`add${add._id}`}
             name="address"
             value={JSON.stringify(add)}
-            onClick={(e) => handleChange(e)}
+            onClick={(e) => {
+              handleChange(e);
+              setShowDeliveryAddress(true);
+            }}
           />
           <label htmlFor={`add${add._id}`}>
             <div>

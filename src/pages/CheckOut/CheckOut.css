@@ -1,3 +1,10 @@
+#checkout-header {
+  text-align: center;
+  color: var(--focus-color);
+  text-decoration: underline;
+  margin: 1rem 0;
+}
+
 .checkout {
   display: flex;
   flex-direction: column;

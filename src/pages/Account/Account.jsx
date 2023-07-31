@@ -35,7 +35,8 @@ export const Account = () => {
   };
   return (
     <div className="account">
-      <h1>Welcome, {userDetail?.firstName}</h1>
+      <h1 id="account-header">Account</h1>
+      <h1 id="account-user-msg">Welcome, {userDetail?.firstName}</h1>
       <div className="account-card">
         <div>
           <span>Name: </span>

@@ -35,7 +35,7 @@ export const CartListProvider = ({ children }) => {
       });
 
       const result = await response.json();
-      toast("Added to cart");
+      toast.success("Added to cart");
       setCart(result?.cart);
     } catch (error) {
       console.error("Error:", error);
@@ -52,7 +52,7 @@ export const CartListProvider = ({ children }) => {
       });
 
       const result = await response.json();
-      toast("Removed from cart");
+      toast.success("Removed from cart");
       setCart(result?.cart);
     } catch (error) {
       console.error("Error:", error);
@@ -61,7 +61,7 @@ export const CartListProvider = ({ children }) => {
 
   const btnClick = (item) => {
     if (!isLoggedIn) {
-      toast("Please login to continue!");
+      toast.info("Please login to continue!");
     } else {
       return cart?.find((cartItem) => cartItem.id === item.id)
         ? ""

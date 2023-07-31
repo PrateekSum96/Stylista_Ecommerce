@@ -1,13 +1,14 @@
 import "./CardProductList.css";
 
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import { WishListContext } from "../../contexts/CartContext/WishListContext";
 
 const ProductListCard = (item) => {
   const { cart, btnClick } = useContext(CartListContext);
   const { showWishList, btnClickWishList } = useContext(WishListContext);
+  const navigate = useNavigate();
   const inTheCart = (item) => {
     return cart?.find((cartItem) => cartItem.id === item.id);
   };
@@ -17,9 +18,9 @@ const ProductListCard = (item) => {
   };
   return (
     <div className="product-card" key={item.id}>
-      <NavLink to={`/productDetail/${item.id}`}>
+      <Link to={`/productDetail/${item.id}`}>
         <img src={item.image_url} alt={item.title} />
-      </NavLink>
+      </Link>
 
       {item.trending && <div className="trending">Trending</div>}
       <div className="rating-review-size">
@@ -35,7 +36,7 @@ const ProductListCard = (item) => {
       </div>
       <div className="product-list-info">
         <div className="product-list-title">
-          <NavLink to={`/productDetail/${item.id}`}>{item.title}</NavLink>
+          <Link to={`/productDetail/${item.id}`}>{item.title}</Link>
         </div>
         <div className="description">{item.description}</div>
         <div className="product-list-price">
@@ -48,24 +49,34 @@ const ProductListCard = (item) => {
         <div id="out-of-stock"> Out of Stock</div>
       ) : (
         <div className="btn">
-          <button onClick={() => btnClick(item)} id="add-to-cart-btn">
-            {inTheCart(item) ? (
-              <NavLink to="/cart" className="nav-link">
-                Go to Cart
-              </NavLink>
-            ) : (
-              "Add to cart"
-            )}
-          </button>
-          <button onClick={() => btnClickWishList(item)}>
-            {inTheWishList(item) ? (
-              <NavLink to="/wishList" className="nav-link">
-                Go to Wishlist
-              </NavLink>
-            ) : (
-              "Add to WishList"
-            )}
-          </button>
+          {inTheCart(item) ? (
+            <button onClick={() => navigate("/cart")} id="add-to-cart-btn">
+              Go to Cart
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                btnClick(item);
+              }}
+              id="add-to-cart-btn"
+            >
+              Add to cart
+            </button>
+          )}
+
+          {inTheWishList(item) ? (
+            <button onClick={() => navigate("/wishList")}>
+              Go to Wishlist
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                btnClickWishList(item);
+              }}
+            >
+              Add to WishList
+            </button>
+          )}
         </div>
       )}
     </div>
