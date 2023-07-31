@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "./Home.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CardCategory } from "../../components/Category/CardCategory";
 import { FilterReducerContext } from "../../contexts/ReducerContext/ReducerContext";
 
@@ -39,18 +39,19 @@ export const Home = () => {
               alt="header_image"
             />
           </div>
-          <NavLink to="/productList" id="link-product-page">
-            <button
-              id="btn-product-page"
-              onClick={() => {
-                filterDispatch({
-                  type: "CLEAR_FILTER",
-                });
-              }}
-            >
-              Shop Now
-            </button>
-          </NavLink>
+
+          <button
+            id="btn-product-page"
+            onClick={() => {
+              filterDispatch({
+                type: "CLEAR_FILTER",
+              });
+              navigate("/productList");
+            }}
+          >
+            Shop Now
+          </button>
+
           <div className="category-card">
             <div className="category">
               {showData.map((category) => (

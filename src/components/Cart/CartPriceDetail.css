@@ -70,7 +70,13 @@ table {
 .table-data {
   font-size: 1.3rem;
 }
-
+.cart-add-address {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: bold;
+}
 .btn-place-order button:hover {
   cursor: pointer;
   background-color: var(--focus-color);

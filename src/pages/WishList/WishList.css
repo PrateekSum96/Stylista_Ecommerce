@@ -4,4 +4,5 @@
   font-size: 2rem;
   font-weight: bold;
   color: var(--focus-color);
+  text-decoration: underline;
 }

@@ -69,9 +69,9 @@
   outline: none;
   transition: all 0.2s linear;
 }
-.dd-address:hover {
+.add-address:hover {
   cursor: pointer;
-  background-color: gray;
+  background-color: black;
   color: white;
 }
 

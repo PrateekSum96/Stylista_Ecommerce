@@ -7,7 +7,9 @@ const AddressProvider = ({ children }) => {
   const [showAddress, setShowAddress] = useState([]);
 
   const [hideAddAddress, setHideAddAddress] = useState(false);
+  const [showDeliveryAddress, setShowDeliveryAddress] = useState(false);
   const [showEditBtn, setEditBtn] = useState(false);
+  const [orderAddress, setOrderAddress] = useState({});
 
   const [address, setAddress] = useState({
     firstName: "",
@@ -103,7 +105,6 @@ const AddressProvider = ({ children }) => {
     pincode: "400001",
     phone: "1234567890",
   };
-  const [orderAddress, setOrderAddress] = useState(dummyAddress);
 
   return (
     <AddressContext.Provider
@@ -124,6 +125,8 @@ const AddressProvider = ({ children }) => {
         getAddress,
         orderAddress,
         setOrderAddress,
+        showDeliveryAddress,
+        setShowDeliveryAddress,
       }}
     >
       {children}

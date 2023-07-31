@@ -1,6 +1,6 @@
 import "./CardWishList.css";
 
-import { NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import { WishListContext } from "../../contexts/CartContext/WishListContext";
@@ -8,6 +8,7 @@ import { WishListContext } from "../../contexts/CartContext/WishListContext";
 const CardWishList = (item) => {
   const { btnClick, cart } = useContext(CartListContext);
   const { removeFromWishlist } = useContext(WishListContext);
+  const navigate = useNavigate();
 
   const findInCart = (item) => {
     return cart?.find((cartItem) => cartItem.id === item.id);
@@ -15,9 +16,9 @@ const CardWishList = (item) => {
 
   return (
     <div className="wishList-card">
-      <NavLink to={`/productDetail/${item.id}`}>
+      <Link to={`/productDetail/${item.id}`}>
         <img src={item.image_url} alt={item.description} />
-      </NavLink>
+      </Link>
 
       <div className="wishlist-info">
         <div id="wishlist-item-title">{item.title}</div>
@@ -28,15 +29,20 @@ const CardWishList = (item) => {
         </div>
       </div>
       <div className="wishlist-btn">
-        <button onClick={() => btnClick(item)} id="add-to-cart-btn">
-          {findInCart(item) ? (
-            <NavLink to="/cart" className="nav-link">
-              Go to Cart
-            </NavLink>
-          ) : (
-            "Add to cart"
-          )}
-        </button>
+        {findInCart(item) ? (
+          <button onClick={() => navigate("/cart")} id="add-to-cart-btn">
+            Go to Cart
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              btnClick(item);
+            }}
+            id="add-to-cart-btn"
+          >
+            Add to cart
+          </button>
+        )}
         <button onClick={() => removeFromWishlist(item)}>
           Remove from wishlist
         </button>

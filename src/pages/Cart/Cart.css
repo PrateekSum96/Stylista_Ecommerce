@@ -1,3 +1,10 @@
+#cart-Header {
+  text-align: center;
+  color: var(--focus-color);
+  text-decoration: underline;
+  margin: 1rem 0;
+}
+
 .cart-page {
   display: flex;
   justify-content: center;
