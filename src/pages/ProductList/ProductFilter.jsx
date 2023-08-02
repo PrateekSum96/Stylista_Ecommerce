@@ -65,11 +65,13 @@ export const Filters = () => {
             }
           />
           <datalist id="price">
-            <option value="500" label="500"></option>
-
-            <option value="2500" label="2500"></option>
-
-            <option value="5000" label="5000" id="max-price"></option>
+            <option className="option" value="500" label="500"></option>
+            <option
+              className="option"
+              value="5000"
+              label="5000"
+              id="max-price"
+            ></option>
           </datalist>
         </div>
         <hr />

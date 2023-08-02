@@ -87,13 +87,15 @@ datalist {
   justify-content: space-between;
   writing-mode: vertical-lr;
   width: 150px;
+  margin-left: -0.3rem;
 }
-#price > option {
+.option {
   padding-left: 18px;
 }
 option {
   margin-top: -10px;
-  padding-left: 10px;
+  padding-left: 12px;
+  padding-top: 1rem;
   transform: rotate(-90deg);
 }
 
@@ -131,5 +133,8 @@ input[type="range"] {
   #clear-btn:hover {
     cursor: pointer;
     border: 1px solid var(--primary-color);
+  }
+  datalist {
+    margin-left: -0.8rem;
   }
 }
