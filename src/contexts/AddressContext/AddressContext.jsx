@@ -38,7 +38,7 @@ const AddressProvider = ({ children }) => {
     getAddress();
   }, []);
 
-  const addAddress = async () => {
+  const addAddress = async (address) => {
     try {
       const response = await fetch("/api/user/address", {
         method: "POST",

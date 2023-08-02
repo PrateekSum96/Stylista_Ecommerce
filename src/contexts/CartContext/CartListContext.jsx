@@ -7,7 +7,6 @@ export const CartListContext = createContext();
 
 export const CartListProvider = ({ children }) => {
   const { isLoggedIn } = useContext(AuthContext);
-
   const [cart, setCart] = useState([]);
 
   const cartToShow = async () => {
