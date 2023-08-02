@@ -1,4 +1,4 @@
-const { createContext, useState, useEffect } = require("react");
+const { createContext, useState } = require("react");
 
 const OrderContext = createContext();
 
@@ -6,9 +6,6 @@ const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
   const [info, setInfo] = useState(1);
 
-  useEffect(() => {
-    getOrders();
-  }, []);
   const getOrders = async () => {
     try {
       const response = await fetch("/api/user/orders", {
@@ -17,11 +14,13 @@ const OrderProvider = ({ children }) => {
         },
       });
       const result = await response.json();
+      console.log(result.orders);
       setOrders(result.orders);
     } catch (e) {
       console.error(e);
     }
   };
+
   const addOrders = async (order) => {
     try {
       const response = await fetch("/api/user/orders", {
