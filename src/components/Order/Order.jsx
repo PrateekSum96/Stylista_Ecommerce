@@ -10,7 +10,7 @@ const OrderCard = () => {
   return (
     <div>
       <h2 className="order-header">Orders</h2>
-      {orders.length === 0 && (
+      {orders?.length === 0 && (
         <div className="no-order">
           You haven't ordered anything.
           <button
