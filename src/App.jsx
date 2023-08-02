@@ -71,6 +71,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mockman" element={<Mockman />} />
       </Routes>
+
+      <footer>
+        <div className="footer-info">
+          © No Copyright, Feel free to replicate.
+        </div>
+      </footer>
+
       <ToastContainer
         position="top-center"
         autoClose={1000}

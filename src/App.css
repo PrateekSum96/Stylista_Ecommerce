@@ -6,6 +6,24 @@
 .nav-container {
   height: 103px;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer {
+  margin-top: auto;
+
+  background-color: black;
+
+  color: white;
+}
+.footer-info {
+  padding: 3rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
 @media screen and (min-width: 768px) {
   .nav-container {
     height: 60px;
