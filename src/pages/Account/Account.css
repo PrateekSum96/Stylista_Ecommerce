@@ -6,6 +6,7 @@
 }
 #account-user-msg {
   margin: 0;
+  padding-bottom: 1rem;
 }
 .account {
   display: flex;
@@ -16,6 +17,10 @@
   margin: auto;
   font-size: 1.5rem;
   padding: 1rem;
+  margin-top: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0.3rem;
 }
 .account-card span {
   font-weight: bold;
@@ -30,8 +35,7 @@
 .account-btn {
   font-size: 1.2rem;
   padding: 0.5rem 0.3rem;
-  color: white;
-  background-color: var(--primary-color);
+  background-color: white;
   border-radius: 0.3rem;
   border: 2px solid var(--primary-color);
   margin: 0 1rem;
@@ -39,7 +43,50 @@
 }
 
 .account-btn:hover {
-  background-color: var(--focus-color);
+  background-color: gray;
+  color: white;
   border: 2px solid white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info-selector {
+  margin: 0.7rem 0 0.2rem 0;
+}
+.info-toggle {
+  margin: 0.1rem 0.5rem;
+  border: 2px solid white;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--primary-color);
+  color: white;
+  transition: all 0.2s linear;
+  border-radius: 0.3rem;
+  font-size: 1.1rem;
+}
+.info-toggle:hover {
+  cursor: pointer;
+  background-color: var(--focus-color);
+}
+.info-toggle:focus {
+  background-color: var(--primary-color);
+  outline: 3px solid;
+  outline-color: var(--focus-color);
+}
+.account-address-info {
+  margin: 1rem 0;
+}
+.order-info {
+  max-width: 350px;
+  margin: 1.5rem 0;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  border-radius: 0.3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .order-info {
+    max-width: 450px;
+  }
+  .info-toggle {
+    font-size: 1.4rem;
+  }
 }

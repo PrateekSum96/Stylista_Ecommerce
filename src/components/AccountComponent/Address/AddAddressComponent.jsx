@@ -40,7 +40,7 @@ const AddAddressComponent = () => {
             e.preventDefault();
             setHideAddAddress(!hideAddAddress);
             setAddress(resetAddress);
-            showEditBtn ? editAddress(address) : addAddress();
+            showEditBtn ? editAddress(address) : addAddress(address);
           }}
         >
           <div className="form-container">

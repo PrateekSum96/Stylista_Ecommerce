@@ -9,6 +9,8 @@ import { WishListContext } from "../../contexts/CartContext/WishListContext";
 import { AddAddressComponent } from "../../components/AccountComponent/Address/AddAddressComponent";
 import { ShowAddressComponent } from "../../components/AccountComponent/Address/ShowAddressComponent";
 import { AddressContext } from "../../contexts/AddressContext/AddressContext";
+import { OrderCard } from "../../components/Order/Order";
+import { OrderContext } from "../../contexts/OrderContext/OrderContext";
 
 export const Account = () => {
   const { isLoggedIn, setIsLoggedIn, setPersonInfo, userDetail } =
@@ -16,6 +18,8 @@ export const Account = () => {
   const { setCart } = useContext(CartListContext);
   const { setWishList } = useContext(WishListContext);
   const { hideAddAddress, setShowAddress } = useContext(AddressContext);
+  const { info, setInfo } = useContext(OrderContext);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
 
@@ -36,24 +40,48 @@ export const Account = () => {
   return (
     <div className="account">
       <h1 id="account-header">Account</h1>
-      <h1 id="account-user-msg">Welcome, {userDetail?.firstName}</h1>
-      <div className="account-card">
-        <div>
-          <span>Name: </span>
-          {userDetail?.firstName} {userDetail?.lastName}
-        </div>
-        <div>
-          <span>Email: </span>
-          {userDetail?.email}
-        </div>
-        <div className="account-btn-container">
-          <button onClick={handleLogout} className="account-btn">
-            {isLoggedIn ? "Logout" : "Login"}
-          </button>
-        </div>
+      <h1 id="account-user-msg">Welcome, {userDetail?.firstName} </h1>
+      <div className="info-selector">
+        <button className="info-toggle" onClick={() => setInfo(1)}>
+          Profile Info
+        </button>
+        <button className="info-toggle" onClick={() => setInfo(2)}>
+          Address
+        </button>
+        <button className="info-toggle" onClick={() => setInfo(3)}>
+          Orders
+        </button>
       </div>
-      <ShowAddressComponent />
-      {hideAddAddress && <AddAddressComponent />}
+      {info === 1 && (
+        <div className="account-card">
+          <div>
+            <span>Name: </span>
+            {userDetail?.firstName} {userDetail?.lastName}
+          </div>
+          <div>
+            <span>Email: </span>
+            {userDetail?.email}
+          </div>
+          <div className="account-btn-container">
+            <button onClick={handleLogout} className="account-btn">
+              {isLoggedIn ? "Logout" : "Login"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {info === 2 && (
+        <div className="account-address-info">
+          <ShowAddressComponent />
+          {hideAddAddress && <AddAddressComponent />}
+        </div>
+      )}
+
+      {info === 3 && (
+        <div className="order-info">
+          <OrderCard />
+        </div>
+      )}
     </div>
   );
 };
