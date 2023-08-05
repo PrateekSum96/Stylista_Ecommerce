@@ -13,13 +13,21 @@ const AddAddressComponent = () => {
     dummyAddress,
     showEditBtn,
     editAddress,
+    setOrderAddress,
+    showAddress,
+    setShowDeliveryAddress,
   } = useContext(AddressContext);
 
   const handleAddressChange = (e, keyValue) => {
     const value = e.target.value;
     setAddress({ ...address, [keyValue]: value });
   };
-
+  const handleFirstAddress = (address) => {
+    if (showAddress?.length === 0) {
+      setOrderAddress(address);
+      setShowDeliveryAddress(true);
+    }
+  };
   return (
     <div className="overlay">
       <div className="address-info" onClick={(e) => e.stopPropagation()}>
@@ -39,8 +47,9 @@ const AddAddressComponent = () => {
           onSubmit={(e) => {
             e.preventDefault();
             setHideAddAddress(!hideAddAddress);
-            setAddress(resetAddress);
             showEditBtn ? editAddress(address) : addAddress(address);
+            handleFirstAddress(address);
+            setAddress(resetAddress);
           }}
         >
           <div className="form-container">

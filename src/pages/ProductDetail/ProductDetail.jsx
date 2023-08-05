@@ -20,7 +20,7 @@ export const ProductDetail = () => {
   );
 
   return (
-    <div>
+    <div className="product-detail">
       <div className="product-detail-card">
         <div className="product-detail-img">
           <img
