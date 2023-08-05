@@ -41,7 +41,7 @@ const OrderCard = () => {
                     Items:
                   </td>
                   <td className="info">
-                    <table>
+                    <table className="table-order-info">
                       <thead>
                         <tr>
                           <th>Name</th>

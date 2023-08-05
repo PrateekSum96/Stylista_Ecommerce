@@ -60,7 +60,7 @@ export const CartListProvider = ({ children }) => {
 
   const btnClick = (item) => {
     if (!isLoggedIn) {
-      toast.info("Please login to continue!");
+      toast.error("Please login to continue!");
     } else {
       return cart?.find((cartItem) => cartItem.id === item.id)
         ? ""

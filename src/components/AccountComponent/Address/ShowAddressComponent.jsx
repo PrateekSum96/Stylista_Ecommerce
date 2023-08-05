@@ -11,7 +11,7 @@ const ShowAddressComponent = () => {
     setAddress,
     setEditBtn,
     setOrderAddress,
-
+    orderAddress,
     setShowDeliveryAddress,
   } = useContext(AddressContext);
 
@@ -47,6 +47,7 @@ const ShowAddressComponent = () => {
             type="radio"
             id={`add${add._id}`}
             name="address"
+            checked={orderAddress?._id === add._id}
             value={JSON.stringify(add)}
             onClick={(e) => {
               handleChange(e);
