@@ -4,7 +4,9 @@
   text-decoration: underline;
   margin: 1rem 0;
 }
-
+#cart-loader {
+  text-align: center;
+}
 .cart-page {
   display: flex;
   justify-content: center;

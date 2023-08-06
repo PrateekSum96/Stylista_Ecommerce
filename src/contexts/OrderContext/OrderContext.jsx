@@ -14,7 +14,6 @@ const OrderProvider = ({ children }) => {
         },
       });
       const result = await response.json();
-      console.log(result.orders);
       setOrders(result.orders);
     } catch (e) {
       console.error(e);

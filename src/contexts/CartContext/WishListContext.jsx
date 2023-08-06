@@ -8,8 +8,10 @@ export const WishListContext = createContext();
 export const WishListProvider = ({ children }) => {
   const [showWishList, setWishList] = useState([]);
   const { isLoggedIn } = useContext(AuthContext);
+  const [wishListLoader, setWishListLoader] = useState(true);
 
   const wishlistToShow = async () => {
+    setWishListLoader(true);
     try {
       const response = await fetch("/api/user/wishlist", {
         headers: { authorization: localStorage?.getItem("token") },
@@ -17,12 +19,14 @@ export const WishListProvider = ({ children }) => {
       const result = await response.json();
 
       setWishList(result?.wishlist);
+      setWishListLoader(false);
     } catch (e) {
       console.error(e);
     }
   };
 
   const addToWishList = async (item) => {
+    setWishListLoader(true);
     try {
       const response = await fetch("/api/user/wishlist", {
         method: "POST",
@@ -35,6 +39,7 @@ export const WishListProvider = ({ children }) => {
       const result = await response.json();
       toast.success("Added to Wishlist");
       setWishList(result?.wishlist);
+      setWishListLoader(false);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -51,6 +56,7 @@ export const WishListProvider = ({ children }) => {
   };
 
   const removeFromWishlist = async (item) => {
+    setWishListLoader(true);
     try {
       const response = await fetch(`/api/user/wishlist/${item._id}`, {
         method: "DELETE",
@@ -62,6 +68,7 @@ export const WishListProvider = ({ children }) => {
       const result = await response.json();
       toast.success("Removed from wishlist");
       setWishList(result?.wishlist);
+      setWishListLoader(false);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -76,6 +83,7 @@ export const WishListProvider = ({ children }) => {
         removeFromWishlist,
         setWishList,
         wishlistToShow,
+        wishListLoader,
       }}
     >
       {children}

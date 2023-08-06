@@ -27,8 +27,10 @@ export const SignUpComponent = ({ handleSignUp }) => {
         >
           <div className="signUp-firstName">
             <label htmlFor="first-name">First Name</label>
+            <br />
 
             <input
+              className="signUp-input"
               onChange={(e) =>
                 setPersonInfo(({ firstName }) => ({
                   ...personInfo,
@@ -43,8 +45,10 @@ export const SignUpComponent = ({ handleSignUp }) => {
           </div>
           <div className="signUp-lastName">
             <label htmlFor="last-name">Last Name</label>
+            <br />
 
             <input
+              className="signUp-input"
               onChange={(e) =>
                 setPersonInfo(({ lastName }) => ({
                   ...personInfo,
@@ -60,6 +64,7 @@ export const SignUpComponent = ({ handleSignUp }) => {
           <div className="email-signUp">
             <label htmlFor="email">Email</label>
             <input
+              className="signUp-input"
               onChange={(e) =>
                 setPersonInfo(({ email }) => ({
                   ...personInfo,
@@ -76,6 +81,7 @@ export const SignUpComponent = ({ handleSignUp }) => {
           <div className="password-signUp">
             <label htmlFor="password">Password</label>
             <input
+              className="signUp-input"
               type={personInfo.icon ? "text" : "password"}
               id="password"
               value={password}
@@ -87,7 +93,7 @@ export const SignUpComponent = ({ handleSignUp }) => {
               }
               required
             />
-            <div className="signup-icon">
+            <div className="signUp-icon">
               <i
                 class={`fa-solid ${
                   personInfo.icon ? "fa-eye-slash" : "fa-eye"
@@ -100,6 +106,7 @@ export const SignUpComponent = ({ handleSignUp }) => {
           <div className="password-signUp">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
+              className="signUp-input"
               type={personInfo.confirmIcon ? "text" : "password"}
               id="confirmPassword"
               onChange={(e) =>
@@ -111,7 +118,7 @@ export const SignUpComponent = ({ handleSignUp }) => {
               value={confirmPassword}
               required
             />
-            <div className="signup-icon">
+            <div className="signUp-icon">
               <i
                 class={`fa-solid ${
                   personInfo.confirmIcon ? "fa-eye-slash" : "fa-eye"

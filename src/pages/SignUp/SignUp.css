@@ -8,13 +8,14 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 1rem;
   background-color: rgb(62, 112, 220);
-  width: 15rem;
+  width: 250px;
   color: white;
   text-align: center;
 }
-input {
+.signUp-input {
   border-radius: 0.2rem;
   padding: 0.2rem;
+  width: 180px;
   border: none;
   outline: none;
 }
@@ -44,13 +45,13 @@ input {
   font-size: 1.2rem;
 }
 
-.signup-icon {
+.password-signUp {
   position: relative;
 }
-.signup-icon .fa-solid {
+.signUp-icon > .fa-solid {
   position: absolute;
-  bottom: 0.4rem;
-  left: 4.2rem;
+  bottom: 7px;
+  left: 198px;
   color: rgb(6, 72, 214);
 }
 .email-signUp {

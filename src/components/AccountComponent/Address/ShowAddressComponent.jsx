@@ -47,7 +47,7 @@ const ShowAddressComponent = () => {
             type="radio"
             id={`add${add._id}`}
             name="address"
-            checked={orderAddress?._id === add._id}
+            checked={orderAddress?._id === add._id || showAddress.length === 1}
             value={JSON.stringify(add)}
             onClick={(e) => {
               handleChange(e);

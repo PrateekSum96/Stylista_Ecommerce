@@ -6,3 +6,6 @@
   color: var(--focus-color);
   text-decoration: underline;
 }
+#wishList-loader {
+  text-align: center;
+}

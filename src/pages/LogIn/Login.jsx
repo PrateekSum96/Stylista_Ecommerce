@@ -1,67 +1,47 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { CartListContext } from "../../contexts/CartContext/CartListContext";
-import { WishListContext } from "../../contexts/CartContext/WishListContext";
-import { AddressContext } from "../../contexts/AddressContext/AddressContext";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
-  const { cartToShow } = useContext(CartListContext);
-  const { wishlistToShow } = useContext(WishListContext);
-  const { getAddress } = useContext(AddressContext);
-
-  const { setIsLoggedIn, personInfo, setPersonInfo, setUserDetail } =
+  const { personInfo, setPersonInfo, handleLogin, setIsLoggedIn, userFound } =
     useContext(AuthContext);
   const { email, password } = personInfo;
+
   const location = useLocation();
   const navigate = useNavigate();
 
   let cred;
-
   const showPassword = () => {
     setPasswordType(() => !passwordType);
   };
 
   const userLogin = () => {
     cred = { email, password };
-    handleLogin();
+    handleLogin(cred);
   };
 
   const guestLogin = () => {
-    cred = { email: "johnJacob@stylista.com", password: "johnJocob" };
+    cred = { email: "johnJacob@stylista.com", password: "johnJacob" };
     setPersonInfo((info) => ({ ...info, email: cred.email }));
     setPersonInfo((info) => ({ ...info, password: cred.password }));
   };
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch("/api/auth/login", {
-        method: "POST",
-        body: JSON.stringify(cred),
-      });
-      const data = await response.json();
-
-      if (data.errors) {
-        toast.error(data.errors[0]);
-      } else {
-        setIsLoggedIn(true);
-        setUserDetail(data.foundUser);
-
-        localStorage.setItem("token", data.encodedToken);
-        cartToShow();
-        wishlistToShow();
-        getAddress();
-        navigate(location?.state?.from?.pathname);
-        toast.success("Login successful!!");
-      }
-    } catch (e) {
-      console.error(e);
+  useEffect(() => {
+    if (!userFound) {
+      setIsLoggedIn(false);
     }
-  };
+    if (localStorage.getItem("token")) {
+      if (userFound?.email === "johnJacob@stylista.com") {
+        navigate(location?.state?.from?.pathname);
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
@@ -69,8 +49,8 @@ export const LogIn = () => {
         <h2>Sign In</h2>
         <form
           onSubmit={(e) => {
-            userLogin();
             e.preventDefault();
+            userLogin();
           }}
         >
           <div className="email-signIn">
@@ -112,7 +92,7 @@ export const LogIn = () => {
             <button onClick={guestLogin}>Login As a Guest</button>
           </div>
           <div className="signUp-signIn">
-            Don't have an account?<NavLink to="/signup">sign up</NavLink>
+            Don't have an account?<Link to="/signup">sign up</Link>
           </div>
         </form>
       </div>

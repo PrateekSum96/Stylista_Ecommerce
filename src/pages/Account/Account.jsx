@@ -1,7 +1,7 @@
 import "./Account.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
@@ -13,16 +13,25 @@ import { OrderCard } from "../../components/Order/Order";
 import { OrderContext } from "../../contexts/OrderContext/OrderContext";
 
 export const Account = () => {
-  const { isLoggedIn, setIsLoggedIn, setPersonInfo, userDetail } =
+  const { isLoggedIn, setIsLoggedIn, setPersonInfo, userDetail, userFound } =
     useContext(AuthContext);
   const { setCart } = useContext(CartListContext);
   const { setWishList } = useContext(WishListContext);
-  const { hideAddAddress, setShowAddress } = useContext(AddressContext);
-  const { info, setInfo } = useContext(OrderContext);
+  const { hideAddAddress, setShowAddress, getAddress } =
+    useContext(AddressContext);
+  const { info, setInfo, getOrders } = useContext(OrderContext);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getAddress();
+      getOrders();
+    }
+    // eslint-disable-next-line
+  }, [isLoggedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-
+    localStorage.removeItem("foundUser");
     setIsLoggedIn(false);
 
     setPersonInfo({
@@ -42,25 +51,35 @@ export const Account = () => {
       <h1 id="account-header">Account</h1>
       <h1 id="account-user-msg">Welcome, {userDetail?.firstName} </h1>
       <div className="info-selector">
-        <button className="info-toggle" onClick={() => setInfo(1)}>
+        <span
+          className={`info-toggle ${info === 1 && "active-info"}`}
+          onClick={() => setInfo(1)}
+        >
           Profile Info
-        </button>
-        <button className="info-toggle" onClick={() => setInfo(2)}>
+        </span>
+        <span
+          className={`info-toggle ${info === 2 && "active-info"}`}
+          onClick={() => setInfo(2)}
+        >
           Address
-        </button>
-        <button className="info-toggle" onClick={() => setInfo(3)}>
+        </span>
+        <span
+          className={`info-toggle ${info === 3 && "active-info"}`}
+          onClick={() => setInfo(3)}
+        >
           Orders
-        </button>
+        </span>
       </div>
       {info === 1 && (
         <div className="account-card">
           <div>
             <span>Name: </span>
-            {userDetail?.firstName} {userDetail?.lastName}
+            {userFound?.firstName || userDetail?.firstName}{" "}
+            {userDetail?.lastName || userFound?.lastName}
           </div>
           <div>
             <span>Email: </span>
-            {userDetail?.email}
+            {userDetail?.email || userFound?.email}
           </div>
           <div className="account-btn-container">
             <button onClick={handleLogout} className="account-btn">

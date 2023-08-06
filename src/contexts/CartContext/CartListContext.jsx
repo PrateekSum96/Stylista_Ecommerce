@@ -8,8 +8,10 @@ export const CartListContext = createContext();
 export const CartListProvider = ({ children }) => {
   const { isLoggedIn } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
+  const [cartLoader, setCartLoader] = useState(true);
 
   const cartToShow = async () => {
+    setCartLoader(true);
     try {
       const response = await fetch("/api/user/cart", {
         headers: {
@@ -18,12 +20,14 @@ export const CartListProvider = ({ children }) => {
       });
       const result = await response.json();
       setCart(result?.cart);
+      setCartLoader(false);
     } catch (e) {
       console.error(e);
     }
   };
 
   const addToCart = async (item) => {
+    setCartLoader(true);
     try {
       const response = await fetch("/api/user/cart", {
         method: "POST",
@@ -36,12 +40,14 @@ export const CartListProvider = ({ children }) => {
       const result = await response.json();
       toast.success("Added to cart");
       setCart(result?.cart);
+      setCartLoader(false);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   const removeFromCart = async (cartItem) => {
+    setCartLoader(true);
     try {
       const response = await fetch(`/api/user/cart/${cartItem._id}`, {
         method: "DELETE",
@@ -53,6 +59,7 @@ export const CartListProvider = ({ children }) => {
       const result = await response.json();
       toast.success("Removed from cart");
       setCart(result?.cart);
+      setCartLoader(false);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -106,6 +113,7 @@ export const CartListProvider = ({ children }) => {
         cartToShow,
         incrementProduct,
         decrementProduct,
+        cartLoader,
       }}
     >
       {children}
