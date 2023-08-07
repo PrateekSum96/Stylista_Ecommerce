@@ -65,7 +65,7 @@
   cursor: pointer;
   background-color: var(--focus-color);
 }
-.info-toggle:focus {
+.active-info {
   background-color: black;
 }
 .account-address-info {
