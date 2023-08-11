@@ -1,16 +1,12 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const LogIn = () => {
   const [passwordType, setPasswordType] = useState(false);
-  const { personInfo, setPersonInfo, handleLogin, setIsLoggedIn, userFound } =
-    useContext(AuthContext);
+  const { personInfo, setPersonInfo, handleLogin } = useContext(AuthContext);
   const { email, password } = personInfo;
-
-  const location = useLocation();
-  const navigate = useNavigate();
 
   let cred;
   const showPassword = () => {
@@ -27,21 +23,6 @@ export const LogIn = () => {
     setPersonInfo((info) => ({ ...info, email: cred.email }));
     setPersonInfo((info) => ({ ...info, password: cred.password }));
   };
-
-  useEffect(() => {
-    if (!userFound) {
-      setIsLoggedIn(false);
-    }
-    if (localStorage.getItem("token")) {
-      if (userFound?.email === "johnJacob@stylista.com") {
-        navigate(location?.state?.from?.pathname);
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-    }
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <div>

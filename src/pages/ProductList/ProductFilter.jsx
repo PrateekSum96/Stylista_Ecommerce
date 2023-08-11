@@ -26,7 +26,11 @@ export const Filters = () => {
   return (
     <div>
       <input type="checkbox" id="openSideBar" />
-      <label htmlFor="openSideBar" className="sideBarIconToggle">
+      <label
+        htmlFor="openSideBar"
+        className="sideBarIconToggle"
+        id="filter-icon"
+      >
         <div className="spinner top"></div>
         <div className="spinner middle"></div>
         <div className="spinner bottom"></div>

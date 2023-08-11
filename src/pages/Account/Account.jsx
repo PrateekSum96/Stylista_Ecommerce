@@ -13,7 +13,7 @@ import { OrderCard } from "../../components/Order/Order";
 import { OrderContext } from "../../contexts/OrderContext/OrderContext";
 
 export const Account = () => {
-  const { isLoggedIn, setIsLoggedIn, setPersonInfo, userDetail, userFound } =
+  const { isLoggedIn, setIsLoggedIn, setPersonInfo, userDetail } =
     useContext(AuthContext);
   const { setCart } = useContext(CartListContext);
   const { setWishList } = useContext(WishListContext);
@@ -74,12 +74,11 @@ export const Account = () => {
         <div className="account-card">
           <div>
             <span>Name: </span>
-            {userFound?.firstName || userDetail?.firstName}{" "}
-            {userDetail?.lastName || userFound?.lastName}
+            {userDetail?.firstName} {userDetail?.lastName}
           </div>
           <div>
             <span>Email: </span>
-            {userDetail?.email || userFound?.email}
+            {userDetail?.email}
           </div>
           <div className="account-btn-container">
             <button onClick={handleLogout} className="account-btn">

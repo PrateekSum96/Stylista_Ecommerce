@@ -56,7 +56,6 @@ export const WishListProvider = ({ children }) => {
   };
 
   const removeFromWishlist = async (item) => {
-    setWishListLoader(true);
     try {
       const response = await fetch(`/api/user/wishlist/${item._id}`, {
         method: "DELETE",
@@ -68,7 +67,6 @@ export const WishListProvider = ({ children }) => {
       const result = await response.json();
       toast.success("Removed from wishlist");
       setWishList(result?.wishlist);
-      setWishListLoader(false);
     } catch (error) {
       console.error("Error:", error);
     }

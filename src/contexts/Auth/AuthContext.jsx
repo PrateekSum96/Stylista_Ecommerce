@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(true);
         setUserDetail(data.foundUser);
         localStorage.setItem("token", data.encodedToken);
-        localStorage.setItem("foundUser", JSON.stringify(data.foundUser));
+
         navigate(location?.state?.from?.pathname);
         toast.success("Login successful!!");
       }
@@ -52,7 +52,6 @@ export const AuthProvider = ({ children }) => {
       console.error(e);
     }
   };
-  const userFound = JSON.parse(localStorage?.getItem("foundUser"));
 
   //signUp
 
@@ -78,6 +77,34 @@ export const AuthProvider = ({ children }) => {
       console.error("Error:", error);
     }
   };
+
+  // VerifyUser
+  const verifyUser = async () => {
+    try {
+      const response = await fetch("/api/auth/verify", {
+        method: "POST",
+        body: JSON.stringify({ encodedToken: localStorage?.getItem("token") }),
+      });
+
+      if (response.status === 200) {
+        const result = await response.json();
+
+        setIsLoggedIn(true);
+        setUserDetail(result.user);
+        navigate(location?.state?.from?.pathname);
+      } else {
+        setIsLoggedIn(false);
+      }
+    } catch (e) {
+      console.error(e);
+      setIsLoggedIn(false);
+    }
+  };
+
+  useEffect(() => {
+    verifyUser();
+    // eslint-disable-next-line
+  }, []);
   return (
     <AuthContext.Provider
       value={{
@@ -89,7 +116,8 @@ export const AuthProvider = ({ children }) => {
         setUserDetail,
         handleLogin,
         signUp,
-        userFound,
+
+        verifyUser,
       }}
     >
       {children}

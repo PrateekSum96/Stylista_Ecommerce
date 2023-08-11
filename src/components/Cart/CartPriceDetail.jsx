@@ -52,7 +52,9 @@ const CartPriceDetail = ({ checkOut }) => {
         <div>
           <span> Discount:</span>
 
-          <span className="price-span">&#8377;{Math.round(price * 0.1)}</span>
+          <span className="price-span">
+            {"-"} &#8377;{Math.round(price * 0.1)}
+          </span>
         </div>
 
         <div>

@@ -40,10 +40,12 @@ const CartItemList = () => {
                 <button
                   className="inc-dec-btn"
                   style={{
-                    cursor: cartItem?.qty <= 1 ? "not-allowed" : "pointer",
+                    cursor: "pointer",
                   }}
                   onClick={() => {
-                    decrementProduct(cartItem);
+                    cartItem?.qty <= 1
+                      ? removeFromCart(cartItem)
+                      : decrementProduct(cartItem);
                   }}
                 >
                   -

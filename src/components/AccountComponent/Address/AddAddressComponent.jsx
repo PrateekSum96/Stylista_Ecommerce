@@ -16,6 +16,7 @@ const AddAddressComponent = () => {
     setOrderAddress,
     showAddress,
     setShowDeliveryAddress,
+    orderAddress,
   } = useContext(AddressContext);
 
   const handleAddressChange = (e, keyValue) => {
@@ -48,6 +49,9 @@ const AddAddressComponent = () => {
             e.preventDefault();
             setHideAddAddress(!hideAddAddress);
             showEditBtn ? editAddress(address) : addAddress(address);
+            showEditBtn &&
+              orderAddress?._id === address._id &&
+              setOrderAddress(address);
             handleFirstAddress(address);
             setAddress(resetAddress);
           }}

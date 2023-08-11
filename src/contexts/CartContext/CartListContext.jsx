@@ -47,7 +47,6 @@ export const CartListProvider = ({ children }) => {
   };
 
   const removeFromCart = async (cartItem) => {
-    setCartLoader(true);
     try {
       const response = await fetch(`/api/user/cart/${cartItem._id}`, {
         method: "DELETE",
@@ -59,7 +58,6 @@ export const CartListProvider = ({ children }) => {
       const result = await response.json();
       toast.success("Removed from cart");
       setCart(result?.cart);
-      setCartLoader(false);
     } catch (error) {
       console.error("Error:", error);
     }

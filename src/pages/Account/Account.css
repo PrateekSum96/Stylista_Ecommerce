@@ -53,7 +53,6 @@
   margin: 0.7rem 0 0.2rem 0;
 }
 .info-toggle {
-  border: 2px solid black;
   padding: 0.5rem 0.8rem;
   background-color: var(--primary-color);
   color: white;
@@ -63,7 +62,7 @@
 }
 .info-toggle:hover {
   cursor: pointer;
-  background-color: var(--focus-color);
+  background-color: black;
 }
 .active-info {
   background-color: black;

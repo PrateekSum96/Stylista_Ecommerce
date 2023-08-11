@@ -10,7 +10,7 @@
 #openSideBar {
   position: absolute;
   left: 0.2rem;
-  top: 6.5rem;
+  top: 7rem;
 }
 .filter-title {
   font-size: 1.2rem;
@@ -42,7 +42,10 @@
 #openSideBar:checked ~ .filters {
   transform: translateX(0px);
 }
-
+#filter-icon {
+  position: fixed;
+  top: 7rem;
+}
 .spinner {
   height: 3px;
   background-color: black;

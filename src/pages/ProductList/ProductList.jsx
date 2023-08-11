@@ -1,8 +1,7 @@
 import "./ProductList.css";
-
 import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext/CartContext";
 
+import { CartContext } from "../../contexts/CartContext/CartContext";
 import { Filters } from "./ProductFilter";
 import { FilterReducerContext } from "../../contexts/ReducerContext/ReducerContext";
 import { ProductListCard } from "../../components/ProductList/ProductListCard";
@@ -34,7 +33,7 @@ export const ProductList = () => {
     }
     if (byRating) {
       filteredProduct = filteredProduct.filter(
-        (product) => Math.floor(product.rating) === Number(byRating)
+        (product) => Math.floor(product.rating) >= Number(byRating)
       );
     }
     if (search) {
