@@ -19,10 +19,15 @@ footer {
 
   color: white;
 }
-.footer-info {
+.footer {
   padding: 2rem;
   text-align: center;
   font-size: 1.2rem;
+}
+
+#footer-info {
+  margin: 0.5rem;
+  /* padding: 0; */
 }
 @media screen and (min-width: 768px) {
   .nav-container {

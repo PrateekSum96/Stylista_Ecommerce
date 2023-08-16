@@ -73,8 +73,22 @@ function App() {
       </Routes>
 
       <footer>
-        <div className="footer-info">
-          © No Copyright, Feel free to replicate.
+        <div className="footer">
+          <div>
+            <h3 id="footer-info">About Us</h3>
+            Stylista is your ultimate destination for discovering and exploring
+            a vast collection of cloths.
+          </div>
+          <div>
+            <h3 id="footer-info">Contact</h3>
+            <div>
+              <span>Phone:</span> 123456789
+            </div>
+            <div>
+              <span>Email:</span> stylista@abc.com
+            </div>
+          </div>
+          <p> © 2023 Stylista. All rights reserved.</p>
         </div>
       </footer>
 
