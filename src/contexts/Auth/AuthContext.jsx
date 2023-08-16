@@ -23,12 +23,6 @@ export const AuthProvider = ({ children }) => {
 
   const { firstName, lastName, email, password } = personInfo;
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("token")) {
-  //     setIsLoggedIn(true);
-  //   }
-  // }, []);
-
   //logIn
   const handleLogin = async (cred) => {
     try {
@@ -45,7 +39,9 @@ export const AuthProvider = ({ children }) => {
         setUserDetail(data.foundUser);
         localStorage.setItem("token", data.encodedToken);
 
-        navigate(location?.state?.from?.pathname);
+        // navigate(location?.state?.from?.pathname);
+        navigate("/");
+
         toast.success("Login successful!!");
       }
     } catch (e) {
