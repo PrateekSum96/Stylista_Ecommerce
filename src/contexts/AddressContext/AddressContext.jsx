@@ -53,9 +53,9 @@ const AddressProvider = ({ children }) => {
     }
   };
 
-  const removeAddress = async (address) => {
+  const removeAddress = async (add) => {
     try {
-      const response = await fetch(`/api/user/address/${address._id}`, {
+      const response = await fetch(`/api/user/address/${add._id}`, {
         method: "DELETE",
         headers: {
           authorization: localStorage?.getItem("token"),
@@ -80,8 +80,12 @@ const AddressProvider = ({ children }) => {
       });
 
       const result = await response.json();
+
       toast("Address updated!");
       setShowAddress(result.address);
+      showAddress?.map(
+        (add) => add._id === address._id && setOrderAddress(address)
+      );
     } catch (error) {
       console.error("Error:", error);
     }
@@ -101,11 +105,10 @@ const AddressProvider = ({ children }) => {
     lastName: "Jacob",
     address: "House No-55, Fraser Road",
     city: "Mumbai",
-    state: "Maharastra",
+    state: "Maharashtra",
     pincode: "400001",
     phone: "1234567890",
   };
-
   return (
     <AddressContext.Provider
       value={{

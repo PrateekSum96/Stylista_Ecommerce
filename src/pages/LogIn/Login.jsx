@@ -70,7 +70,9 @@ export const LogIn = () => {
           </div>
           <div className="btn-signIn">
             <button type="submit">Log In</button>
-            <button onClick={guestLogin}>Login As a Guest</button>
+            <button onClick={guestLogin} id="login-guest">
+              Login As a Guest
+            </button>
           </div>
           <div className="signUp-signIn">
             Don't have an account?<Link to="/signup">sign up</Link>

@@ -51,7 +51,14 @@ input {
   right: 2.2rem;
   color: rgb(6, 72, 214);
 }
-
+#login-guest {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}
+#login-guest:hover {
+  border: 2px solid white;
+}
 @media screen and (min-width: 768px) {
   .signIn-card {
     margin-top: 12rem;

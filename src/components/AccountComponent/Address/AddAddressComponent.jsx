@@ -16,7 +16,6 @@ const AddAddressComponent = () => {
     setOrderAddress,
     showAddress,
     setShowDeliveryAddress,
-    orderAddress,
   } = useContext(AddressContext);
 
   const handleAddressChange = (e, keyValue) => {
@@ -29,6 +28,7 @@ const AddAddressComponent = () => {
       setShowDeliveryAddress(true);
     }
   };
+
   return (
     <div className="overlay">
       <div className="address-info" onClick={(e) => e.stopPropagation()}>
@@ -49,9 +49,6 @@ const AddAddressComponent = () => {
             e.preventDefault();
             setHideAddAddress(!hideAddAddress);
             showEditBtn ? editAddress(address) : addAddress(address);
-            showEditBtn &&
-              orderAddress?._id === address._id &&
-              setOrderAddress(address);
             handleFirstAddress(address);
             setAddress(resetAddress);
           }}
