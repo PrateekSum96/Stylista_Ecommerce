@@ -29,7 +29,7 @@ const AddressProvider = ({ children }) => {
         },
       });
       const result = await response.json();
-      setShowAddress(result.address);
+      result.address !== undefined && setShowAddress(result.address);
     } catch (e) {
       console.error(e);
     }
@@ -38,14 +38,15 @@ const AddressProvider = ({ children }) => {
     getAddress();
   }, []);
 
-  const addAddress = async (address) => {
+  const addAddress = async (addressReceived) => {
     try {
       const response = await fetch("/api/user/address", {
         method: "POST",
         headers: { authorization: localStorage?.getItem("token") },
-        body: JSON.stringify({ address }),
+        body: JSON.stringify({ address: addressReceived }),
       });
       const result = await response.json();
+
       toast("New address added!");
       setShowAddress(result.address);
     } catch (e) {
@@ -69,23 +70,20 @@ const AddressProvider = ({ children }) => {
       console.error("Error:", error);
     }
   };
-  const editAddress = async (address) => {
+  const editAddress = async (addressToEdit) => {
     try {
-      const response = await fetch(`/api/user/address/${address._id}`, {
+      const response = await fetch(`/api/user/address/${addressToEdit._id}`, {
         method: "POST",
         headers: {
           authorization: localStorage?.getItem("token"),
         },
-        body: JSON.stringify({ address }),
+        body: JSON.stringify({ address: addressToEdit }),
       });
 
       const result = await response.json();
-
       toast("Address updated!");
       setShowAddress(result.address);
-      showAddress?.map(
-        (add) => add._id === address._id && setOrderAddress(address)
-      );
+      orderAddress?._id === addressToEdit._id && setOrderAddress(addressToEdit);
     } catch (error) {
       console.error("Error:", error);
     }
