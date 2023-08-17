@@ -22,9 +22,9 @@ const AddAddressComponent = () => {
     const value = e.target.value;
     setAddress({ ...address, [keyValue]: value });
   };
-  const handleFirstAddress = (address) => {
-    if (showAddress?.length === 0) {
-      setOrderAddress(address);
+  const handleFirstAddress = (firstAddress) => {
+    if (showAddress.length === 0) {
+      setOrderAddress(firstAddress);
       setShowDeliveryAddress(true);
     }
   };
@@ -50,6 +50,7 @@ const AddAddressComponent = () => {
             setHideAddAddress(!hideAddAddress);
             showEditBtn ? editAddress(address) : addAddress(address);
             handleFirstAddress(address);
+
             setAddress(resetAddress);
           }}
         >
