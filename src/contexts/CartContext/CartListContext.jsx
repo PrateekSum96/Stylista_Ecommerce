@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const CartListContext = createContext();
 
@@ -9,6 +10,7 @@ export const CartListProvider = ({ children }) => {
   const { isLoggedIn } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
   const [cartLoader, setCartLoader] = useState(true);
+  const navigate = useNavigate();
 
   const cartToShow = async () => {
     setCartLoader(true);
@@ -66,6 +68,7 @@ export const CartListProvider = ({ children }) => {
   const btnClick = (item) => {
     if (!isLoggedIn) {
       toast.error("Please login to continue!");
+      navigate("/login");
     } else {
       return cart?.find((cartItem) => cartItem.id === item.id)
         ? ""

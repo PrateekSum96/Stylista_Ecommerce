@@ -1,21 +1,14 @@
 import "./Cart.css";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import { CartItemList } from "../../components/Cart/CartItemComponent";
 import { CartPriceDetail } from "../../components/Cart/CartPriceDetail";
-import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const Cart = () => {
-  const { cart, cartToShow, cartLoader } = useContext(CartListContext);
-  const { isLoggedIn } = useContext(AuthContext);
-  useEffect(() => {
-    if (isLoggedIn) {
-      cartToShow();
-    }
-    // eslint-disable-next-line
-  }, [isLoggedIn]);
+  const { cart, cartLoader } = useContext(CartListContext);
+
   const navigate = useNavigate();
   return (
     <div>

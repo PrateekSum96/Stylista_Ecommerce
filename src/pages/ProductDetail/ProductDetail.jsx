@@ -18,7 +18,14 @@ export const ProductDetail = () => {
       productToShow?.original_price) *
       100
   );
-
+  const checkInCart = (productToShow) => {
+    return cart?.find((cartItem) => cartItem.id === productToShow?.id);
+  };
+  const checkInWishlist = (productToShow) => {
+    return showWishList?.find(
+      (wishListItem) => wishListItem.id === productToShow?.id
+    );
+  };
   return (
     <div className="product-detail">
       <div className="product-detail-card">
@@ -69,23 +76,19 @@ export const ProductDetail = () => {
               <button
                 onClick={() => {
                   btnClick(productToShow);
-                  navigate("/cart");
+                  checkInCart(productToShow) && navigate("/cart");
                 }}
                 id="add-to-cart-btn"
               >
-                {cart?.find((cartItem) => cartItem.id === productToShow?.id)
-                  ? "Go to Cart"
-                  : "Add to cart"}
+                {checkInCart(productToShow) ? "Go to Cart" : "Add to cart"}
               </button>
               <button
                 onClick={() => {
                   btnClickWishList(productToShow);
-                  navigate("/wishList");
+                  checkInWishlist(productToShow) && navigate("/wishList");
                 }}
               >
-                {showWishList?.find(
-                  (wishListItem) => wishListItem.id === productToShow?.id
-                )
+                {checkInWishlist(productToShow)
                   ? "Go to Wishlist"
                   : "Add to WishList"}
               </button>

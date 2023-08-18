@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const WishListContext = createContext();
 
@@ -9,6 +10,7 @@ export const WishListProvider = ({ children }) => {
   const [showWishList, setWishList] = useState([]);
   const { isLoggedIn } = useContext(AuthContext);
   const [wishListLoader, setWishListLoader] = useState(true);
+  const navigate = useNavigate();
 
   const wishlistToShow = async () => {
     setWishListLoader(true);
@@ -47,7 +49,8 @@ export const WishListProvider = ({ children }) => {
 
   const btnClickWishList = (item) => {
     if (!isLoggedIn) {
-      toast("Please login to continue!");
+      toast.error("Please login to continue!");
+      navigate("/login");
     } else {
       return showWishList?.find((wishListItem) => wishListItem.id === item.id)
         ? ""

@@ -1,21 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { WishListContext } from "../../contexts/CartContext/WishListContext";
 import "./WishList.css";
 import { CardWishList } from "../../components/WishlistComponent/CardWishList";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const WishList = () => {
-  const { showWishList, wishlistToShow, wishListLoader } =
-    useContext(WishListContext);
-  const { isLoggedIn } = useContext(AuthContext);
+  const { showWishList, wishListLoader } = useContext(WishListContext);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      wishlistToShow();
-    }
-    // eslint-disable-next-line
-  }, [isLoggedIn]);
   const navigate = useNavigate();
   return (
     <div>
