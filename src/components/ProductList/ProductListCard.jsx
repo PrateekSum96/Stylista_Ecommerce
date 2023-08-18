@@ -17,7 +17,7 @@ const ProductListCard = (item) => {
     return showWishList?.find((wishListItem) => wishListItem.id === item.id);
   };
   return (
-    <div className="product-card" key={item.id}>
+    <div className="product-card">
       <Link to={`/productDetail/${item.id}`}>
         <img src={item.image_url} alt={item.title} />
       </Link>

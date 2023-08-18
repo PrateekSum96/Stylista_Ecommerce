@@ -39,8 +39,7 @@ export const AuthProvider = ({ children }) => {
         setUserDetail(data.foundUser);
         localStorage.setItem("token", data.encodedToken);
 
-        // navigate(location?.state?.from?.pathname);
-        navigate("/");
+        navigate(location?.state?.from?.pathname);
 
         toast.success("Login successful!!");
       }

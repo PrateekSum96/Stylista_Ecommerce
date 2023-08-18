@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FilterReducerContext } from "../../contexts/ReducerContext/ReducerContext";
 import "./Navigation.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { CartListContext } from "../../contexts/CartContext/CartListContext";
 import { WishListContext } from "../../contexts/CartContext/WishListContext";
+import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const Navigation = () => {
-  const { cart } = useContext(CartListContext);
-  const { showWishList } = useContext(WishListContext);
+  const { cart, cartToShow } = useContext(CartListContext);
+  const { showWishList, wishlistToShow } = useContext(WishListContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const {
@@ -18,6 +20,14 @@ export const Navigation = () => {
   const checkActive = ({ isActive }) => ({
     backgroundColor: isActive && "black",
   });
+  useEffect(() => {
+    setTimeout(() => {
+      wishlistToShow();
+      cartToShow();
+    }, 100);
+
+    // eslint-disable-next-line
+  }, [isLoggedIn]);
 
   return (
     <div>

@@ -57,7 +57,9 @@ export const ProductList = () => {
         {transformProduct()?.length === 0 ? (
           <h1>No Products Found!</h1>
         ) : (
-          transformProduct()?.map((item) => <ProductListCard {...item} />)
+          transformProduct()?.map((item) => (
+            <ProductListCard {...item} key={item._id} />
+          ))
         )}
       </div>
     </div>

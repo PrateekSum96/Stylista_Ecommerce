@@ -20,7 +20,7 @@ const CartPriceDetail = ({ checkOut }) => {
   );
 
   const orders = {
-    items: cart.map((item) => ({
+    items: cart?.map((item) => ({
       qty: item.qty,
       title: item.title,
       id: item._id,
