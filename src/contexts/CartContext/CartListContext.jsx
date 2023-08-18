@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Auth/AuthContext";
@@ -27,6 +27,10 @@ export const CartListProvider = ({ children }) => {
       console.error(e);
     }
   };
+
+  useEffect(() => {
+    cartToShow();
+  }, []);
 
   const addToCart = async (item) => {
     setCartLoader(true);
@@ -68,6 +72,7 @@ export const CartListProvider = ({ children }) => {
   const btnClick = (item) => {
     if (!isLoggedIn) {
       toast.error("Please login to continue!");
+
       navigate("/login");
     } else {
       return cart?.find((cartItem) => cartItem.id === item.id)

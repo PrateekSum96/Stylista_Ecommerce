@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../Auth/AuthContext";
@@ -26,6 +26,10 @@ export const WishListProvider = ({ children }) => {
       console.error(e);
     }
   };
+
+  useEffect(() => {
+    wishlistToShow();
+  }, []);
 
   const addToWishList = async (item) => {
     setWishListLoader(true);
