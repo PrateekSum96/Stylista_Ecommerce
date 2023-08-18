@@ -49,6 +49,10 @@ const AddressProvider = ({ children }) => {
 
       toast("New address added!");
       setShowAddress(result.address);
+      if (showAddress.length === 0) {
+        setOrderAddress(result.address[0]);
+        setShowDeliveryAddress(true);
+      }
     } catch (e) {
       console.error(e);
     }

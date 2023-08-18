@@ -13,20 +13,11 @@ const AddAddressComponent = () => {
     dummyAddress,
     showEditBtn,
     editAddress,
-    setOrderAddress,
-    showAddress,
-    setShowDeliveryAddress,
   } = useContext(AddressContext);
 
   const handleAddressChange = (e, keyValue) => {
     const value = e.target.value;
     setAddress({ ...address, [keyValue]: value });
-  };
-  const handleFirstAddress = (firstAddress) => {
-    if (showAddress.length === 0) {
-      setOrderAddress(firstAddress);
-      setShowDeliveryAddress(true);
-    }
   };
 
   return (
@@ -49,7 +40,6 @@ const AddAddressComponent = () => {
             e.preventDefault();
             setHideAddAddress(!hideAddAddress);
             showEditBtn ? editAddress(address) : addAddress(address);
-            handleFirstAddress(address);
 
             setAddress(resetAddress);
           }}
